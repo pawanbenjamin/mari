@@ -8,12 +8,23 @@ let visible = false
       <input type="checkbox" />
     </label>
   </div>
-  <h1>mariposa <br />wellness</h1>
+
   <span>contact</span>
 </header>
+<div id="name">
+  <h1>mariposa</h1>
+  <h1>wellness</h1>
+</div>
 <style>
-  .burger-box {
-    display: flex;
+  #name {
+    text-align: center;
+    font-family: "Manrope", sans-serif;
+    margin-top: -1.8rem;
+  }
+
+  #burger-box,
+  span {
+    width: 25%;
   }
 
   h1 {
@@ -25,11 +36,13 @@ let visible = false
   header span {
     font-weight: 800;
     font-size: smaller;
+    text-align: right;
   }
   header span:hover {
     opacity: 0.6;
   }
   header {
+    margin-top: 1rem;
     font-family: "Manrope", sans-serif;
     --bar-width: 20px;
     --bar-height: 2px;
@@ -44,6 +57,8 @@ let visible = false
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem 0;
+    position: sticky;
+    top: 0;
   }
   .hamburger-menu {
     --x-width: calc(var(--hamburger-height) * 1.41421356237);
@@ -117,3 +132,33 @@ let visible = false
     min-height: 100vh;
   }
 </style>
+<script defer>
+  const name = document.querySelector("#name")
+  function fadeOutOnScroll(element) {
+    if (!element) {
+      return
+    }
+
+    let distanceToTop = window.pageYOffset + element.getBoundingClientRect().top
+
+    let elementHeight = element.offsetHeight
+    let scrollTop = document.documentElement.scrollTop
+
+    console.log({ distanceToTop, elementHeight, scrollTop })
+
+    let opacity = 1
+
+    if (scrollTop > distanceToTop) {
+      opacity = 1 - (scrollTop - distanceToTop) / elementHeight
+    }
+
+    if (opacity >= 0) {
+      element.style.opacity = opacity
+    }
+  }
+  function scrollHandler() {
+    fadeOutOnScroll(name)
+  }
+
+  window.addEventListener("scroll", scrollHandler)
+</script>

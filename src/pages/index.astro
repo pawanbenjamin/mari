@@ -20,6 +20,7 @@ import Layout from "../layouts/Layout.astro"
         <h1><span class="white">mariposa</span> <br /><span>wellness</span></h1>
       </figcaption>
     </figure>
+    <hr />
     <section>
       <p>
         At Mariposa Wellness I combine a variety of manual medicine modalities
@@ -41,14 +42,15 @@ import Layout from "../layouts/Layout.astro"
 
 <style>
   button {
-    padding: 0.15rem 0;
+    padding: 0.25rem 0;
     border-radius: 2px;
     font-size: 0.9rem;
     color: rgb(21, 21, 52);
     /* opacity: 0.5; */
-    font-weight: 400;
-    width: 80%;
+    font-weight: 500;
+    width: 50%;
     background-color: #e8d2d2;
+    border: none;
   }
 
   button:hover {
@@ -71,6 +73,7 @@ import Layout from "../layouts/Layout.astro"
   nav {
     text-align: right;
     font-style: italic;
+    font-weight: 300;
   }
 
   nav span:hover {
@@ -102,8 +105,9 @@ import Layout from "../layouts/Layout.astro"
   }
 
   p {
-    margin: 1rem;
+    margin: 2rem;
     line-height: 1.1rem;
+    font-weight: 200;
   }
 
   img {
@@ -112,7 +116,7 @@ import Layout from "../layouts/Layout.astro"
 
   main {
     margin: auto;
-    max-width: 60ch;
+    height: 100vh;
     padding-bottom: 4rem;
   }
   h1 {
