@@ -1,81 +1,155 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro"
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout title="Welcome to Mariposa Wellness">
+  <header>
+    <h3>Integrative Manual Therapy <br /> & Pelvic Health</h3>
+    <nav>
+      <div><span> ← previous</span></div>
+      <div><span>next →</span></div>
+    </nav>
+  </header>
+  <main>
+    <figure>
+      <img
+        src="https://res.cloudinary.com/dmstif28x/image/upload/v1677203891/eight_iwlrer.jpg"
+        alt=""
+      />
+      <figcaption id="main-heading">
+        <h1><span class="white">mariposa</span> <br /><span>wellness</span></h1>
+      </figcaption>
+    </figure>
+    <section>
+      <p>
+        At Mariposa Wellness I combine a variety of manual medicine modalities
+        to treat the whole person. <br /><br />With an expertise in Pelvic
+        Health and almost 20 years experience as a physical therapist my goal is
+        to provide treatment to enhance your overall movement and function while
+        empowering you with knowledge regarding your body and particular
+        condition and techniques for self care.
+      </p>
+    </section>
+    <hr />
+    <section id="ask">
+      <button>I would like to become a new patient.</button>
+      <button>I would like to book an appointment.</button>
+    </section>
+    <hr />
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  button {
+    padding: 0.15rem 0;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    color: rgb(21, 21, 52);
+    /* opacity: 0.5; */
+    font-weight: 400;
+    width: 80%;
+    background-color: #e8d2d2;
+  }
+
+  button:hover {
+    background-color: #cab6b6;
+  }
+
+  #ask {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 2rem;
+  }
+  hr {
+    margin: 0 1rem;
+  }
+
+  nav {
+    text-align: right;
+    font-style: italic;
+  }
+
+  nav span:hover {
+    opacity: 0.6;
+  }
+  .white {
+    color: white;
+    opacity: 0.7;
+  }
+
+  figure {
+    margin-bottom: 4rem;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1rem 0.75rem 1rem;
+
+    font-weight: 800;
+    line-height: 1rem;
+  }
+
+  #main-heading {
+    margin-top: -5rem;
+    line-height: 1.25rem;
+    text-align: right;
+    padding-right: 1rem;
+  }
+
+  p {
+    margin: 1rem;
+    line-height: 1.1rem;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  main {
+    margin: auto;
+    max-width: 60ch;
+    padding-bottom: 4rem;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
 </style>
