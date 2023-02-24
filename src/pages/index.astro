@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro"
 ---
 
 <Layout title="Welcome to Mariposa Wellness">
-  <header>
+  <header id="sub-nav">
     <h3>Integrative Manual Therapy <br /> & Pelvic Health</h3>
     <nav>
       <div><span> ← previous</span></div>
@@ -65,9 +65,6 @@ import Layout from "../layouts/Layout.astro"
     align-items: center;
     gap: 0.6rem;
     padding-bottom: 2rem;
-  }
-  hr {
-    margin: 0 1rem;
   }
 
   nav {
@@ -157,3 +154,33 @@ import Layout from "../layouts/Layout.astro"
     padding: 0;
   }
 </style>
+<script defer>
+  const subNav = document.querySelector("#sub-nav")
+  function fadeOutOnScroll(element) {
+    if (!element) {
+      return
+    }
+
+    let distanceToTop = window.pageYOffset + element.getBoundingClientRect().top
+
+    let elementHeight = element.offsetHeight
+    let scrollTop = document.documentElement.scrollTop
+
+    console.log({ distanceToTop, elementHeight, scrollTop })
+
+    let opacity = 1
+
+    if (scrollTop > distanceToTop) {
+      opacity = 1 - (scrollTop - distanceToTop) / elementHeight
+    }
+
+    if (opacity >= 0) {
+      element.style.opacity = opacity
+    }
+  }
+  function scrollHandler() {
+    fadeOutOnScroll(subNav)
+  }
+
+  window.addEventListener("scroll", scrollHandler)
+</script>
