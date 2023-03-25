@@ -3,7 +3,7 @@ let visible = false;
 ---
 
 <header>
-  <div id="overlaid-menu" class="hidden fade-in fade-out">
+  <div id="overlaid-menu" class="hidden">
     <ul>
       <a href="/"><li><h2>home</h2></li></a>
       <a href="/about"> <li><h2>about</h2></li></a>
@@ -79,6 +79,7 @@ let visible = false;
     background-color: white;
     width: 100vw;
     height: 100vh;
+    transition: all 1s;
   }
 
   #name {
@@ -218,7 +219,10 @@ let visible = false;
   const contact = document.querySelector("span");
   const burger = document.querySelector("input");
   burger.addEventListener("click", (e) => {
+    menu.classList.toggle("fade-in");
     menu.classList.toggle("hidden");
+    // menu.classList.toggle("fade-out");
     contact.classList.toggle("hidden");
+    console.log({ menu: menu.classList, contact: contact.classList });
   });
 </script>
