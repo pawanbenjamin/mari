@@ -12,7 +12,9 @@ const { title, desc, prev, next } = Astro.props;
 <header id="sub-nav">
   <h3>{title}<br /> {desc}</h3>
   <nav>
-    <div><a href={`/${prev}`}><span> ← {prev}</span></a></div>
+    <div>
+      <a href={`/${prev === "home" ? "" : prev}`}><span> ← {prev}</span></a>
+    </div>
     <div>
       <a href={`/${next === "home" ? "" : next}`}><span>{next} →</span></a>
     </div>
