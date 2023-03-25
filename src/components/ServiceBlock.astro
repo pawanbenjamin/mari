@@ -23,9 +23,9 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
       />
     )
   }
-  <h2>{title}</h2>
-  <p>{desc}</p>
-  <ul>
+  <h2 class="bp">{title}</h2>
+  <p class="bp">{desc}</p>
+  <ul class="bp">
     {
       treatmentList !== undefined &&
         treatmentList.map((treatment) => {
