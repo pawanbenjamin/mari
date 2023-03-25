@@ -1,10 +1,9 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Picture, Image } from "@astrojs/image/components";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import PageHeader from "../components/PageHeader.astro";
-const remoteImage =
-  "https://res.cloudinary.com/dmstif28x/image/upload/v1677203891/eight_iwlrer.jpg";
+import remoteImage from "../images/eight.jpg";
 ---
 
 <Layout title="Welcome to Mariposa Wellness">
@@ -17,9 +16,9 @@ const remoteImage =
   <main>
     <figure>
       <Picture
-        src={remoteImage}
-        widths={[200, 400, 800, 1000, 2400]}
         aspectRatio="4:3"
+        src={remoteImage}
+        widths={[200, 400, 800, 1000, 3600]}
         sizes="100vw"
         alt="Marisa with Patient"
       />
