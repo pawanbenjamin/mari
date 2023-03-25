@@ -1,12 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
+import emailjs from "@emailjs/browser";
 // import { ContactForm } from "../components/ContactForm";
+// const p_k = import.meta.env.PUBLIC_KEY;
+// console.log(p_k);
 ---
 
 <Layout title="contact">
   <PageHeader title="contact" desc="contact us" next="home" prev="faq" />
-  <!-- <div class="container">
+  <div class="container">
     <section>
       <h3>Returning Patients</h3>
       <p>Follow the link below</p>
@@ -18,7 +21,7 @@ import PageHeader from "../components/PageHeader.astro";
         Please fill out the form below and we will get back to you as soon as
         possible!
       </p>
-      <form method="POST" id="contact-form">
+      <form id="contact-form">
         <input type="text" name="name" placeholder="name" />
         <input type="email" name="email" placeholder="email" />
         <input type="text" name="subject" placeholder="subject" />
@@ -26,8 +29,7 @@ import PageHeader from "../components/PageHeader.astro";
         <button type="submit">Sumbit</button>
       </form>
     </section>
-  </div> -->
-  <!-- <ContactForm /> -->
+  </div>
 </Layout>
 <style>
   .container {
@@ -47,11 +49,44 @@ import PageHeader from "../components/PageHeader.astro";
     border-bottom: 1px solid black;
   }
 </style>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
 <script>
+  import emailjs from "@emailjs/browser";
+
+  async function connectToEmailJs() {
+    try {
+      emailjs.init(import.meta.env.PUBLIC_KEY);
+      console.log(emailjs);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  connectToEmailJs();
+
   const contactForm = document.getElementById("contact-form");
   console.log(contactForm);
-  contactForm.addEventListener("submit", (e) => {
+  contactForm.addEventListener("submit", async (e) => {
+    // code fragment
     e.preventDefault();
-    console.log("Clicked!");
+
+    emailjs
+      .sendForm(
+        import.meta.env.PUBLIC_SERVICE,
+        import.meta.env.PUBLIC_TEMPLATE,
+        e.target as HTMLFormElement
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+    contactForm.requestFullscreen();
   });
 </script>
