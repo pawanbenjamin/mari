@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
 export interface Props {
@@ -20,6 +21,7 @@ const { title } = Astro.props;
   <body>
     <Header />
     <slot />
+    <Footer />
     <style is:global>
       :root {
         --base-padding: 1rem;
@@ -87,6 +89,14 @@ const { title } = Astro.props;
 
       .bp {
         padding: var(--base-padding);
+      }
+
+      .pic {
+        margin: var(--base-padding);
+      }
+
+      li {
+        list-style: none;
       }
     </style>
   </body>

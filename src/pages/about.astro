@@ -68,13 +68,13 @@ import remoteImage from "../images/mari-karuna.webp";
         importance of healthcare practitioners recognizing the racial and ethic
         differences when developing treatment plans.
       </p>
-      <div class="quote">
+      <!-- <div class="quote">
         <h4>
           "...our main mission(s) was not only to provide exceptional care for
           all persons with pelvic floor dysfunction but also to empower the
           community..."
         </h4>
-      </div>
+      </div> -->
       <p>
         Knowing that I wanted to focus my career in pelvic health, I completed
         the course work through the Herman & Wallace Pelvic Rehabilitation
@@ -149,7 +149,7 @@ import remoteImage from "../images/mari-karuna.webp";
 
   #main-heading {
     margin-top: -3rem;
-    line-height: 1.25rem;
+    line-height: 1rem;
     text-align: right;
     padding-right: var(--base-padding);
   }
@@ -161,7 +161,7 @@ import remoteImage from "../images/mari-karuna.webp";
 
   p {
     padding: 1rem calc(2 * var(--base-padding));
-    line-height: 1.5rem;
+    /* line-height: 1.5rem; */
     font-weight: 400;
   }
 
@@ -170,7 +170,6 @@ import remoteImage from "../images/mari-karuna.webp";
   }
 
   main {
-    height: 100vh;
     padding-bottom: 4rem;
   }
   h1 {
@@ -180,33 +179,33 @@ import remoteImage from "../images/mari-karuna.webp";
   }
 </style>
 <script defer>
-  const subNav = document.querySelector("#sub-nav");
-  function fadeOutOnScroll(element) {
-    if (!element) {
-      return;
-    }
+  // const subNav = document.querySelector("#sub-nav");
+  // function fadeOutOnScroll(element) {
+  //   if (!element) {
+  //     return;
+  //   }
 
-    let distanceToTop =
-      window.pageYOffset + element.getBoundingClientRect().top;
+  //   let distanceToTop =
+  //     window.pageYOffset + element.getBoundingClientRect().top;
 
-    let elementHeight = element.offsetHeight;
-    let scrollTop = document.documentElement.scrollTop;
+  //   let elementHeight = element.offsetHeight;
+  //   let scrollTop = document.documentElement.scrollTop;
 
-    console.log({ distanceToTop, elementHeight, scrollTop });
+  //   console.log({ distanceToTop, elementHeight, scrollTop });
 
-    let opacity = 1;
+  //   let opacity = 1;
 
-    if (scrollTop > distanceToTop) {
-      opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
-    }
+  //   if (scrollTop > distanceToTop) {
+  //     opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
+  //   }
 
-    if (opacity >= 0) {
-      element.style.opacity = opacity;
-    }
-  }
-  function scrollHandler() {
-    fadeOutOnScroll(subNav);
-  }
+  //   if (opacity >= 0) {
+  //     element.style.opacity = opacity;
+  //   }
+  // }
+  // function scrollHandler() {
+  //   fadeOutOnScroll(subNav);
+  // }
 
-  window.addEventListener("scroll", scrollHandler);
+  // window.addEventListener("scroll", scrollHandler);
 </script>

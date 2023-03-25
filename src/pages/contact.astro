@@ -1,10 +1,16 @@
 ---
+import {
+  BackgroundImage,
+  ImageSupportDetection
+} from "astro-imagetools/components";
+
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
+import hands from "../images/hands-on-tummy.jpg";
 ---
 
 <Layout title="contact">
-  <PageHeader title="contact" desc="us" next="home" prev="faq" />
+  <PageHeader title="" desc="contact" next="home" prev="faq" />
   <div class="container">
     <section class="returning">
       <h3>Returning Patients</h3>
@@ -31,34 +37,28 @@ import PageHeader from "../components/PageHeader.astro";
 </Layout>
 <style>
   .container {
-    /* margin: 0 2rem 0 2rem; */
-
-    display: grid;
-    grid-template-columns: 100vw;
-    grid-template-rows: 100% 50vw;
-    grid-template-areas:
-      "returning"
-      "new";
-  }
-
-  p {
-    padding: 0 var(--base-padding) 0 var(--base-padding);
-  }
-  .returning {
-    grid-area: "returning";
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    text-align: center;
+    padding: 0 2rem;
   }
 
   .new {
-    grid-area: "new";
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    height: 66vh;
+    padding: 0 3rem;
+    background-image: url(`/two.jpg`);
   }
 
   .form-container {
     display: flex;
-    align-items: center;
+    flex-direction: column;
   }
 
   form {
@@ -66,16 +66,9 @@ import PageHeader from "../components/PageHeader.astro";
     flex-direction: column;
   }
 
-  section {
-    width: 100vw;
-    text-align: center;
-    padding: var(--base-padding);
-  }
-
   input {
     background: none;
     border: none;
-    border-bottom: 1px solid black;
   }
 </style>
 <script
