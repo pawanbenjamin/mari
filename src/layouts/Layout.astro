@@ -22,6 +22,17 @@ const { title } = Astro.props;
     <slot />
 
     <style is:global>
+      :root {
+        --base-padding: 1rem;
+        --accent: 124, 58, 237;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          #da62c4 30%,
+          white 60%
+        );
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -40,18 +51,33 @@ const { title } = Astro.props;
         color: black;
       }
 
-      :root {
-        --base-padding: 1rem;
-        --accent: 124, 58, 237;
-        --accent-gradient: linear-gradient(
-          45deg,
-          rgb(var(--accent)),
-          #da62c4 30%,
-          white 60%
-        );
-      }
       html {
         background-color: #f6f6f6;
+      }
+
+      /**Buttons */
+      br {
+        height: 2rem;
+      }
+      button {
+        padding: 0.5rem 2rem;
+        border-radius: 2px;
+        font-size: 0.9rem;
+        color: rgb(21, 21, 52);
+        font-weight: 500;
+        background-color: #e8d2d2;
+        border: none;
+        line-height: 1rem;
+      }
+
+      button:hover {
+        background-color: #cab6b6;
+      }
+
+      /** Global Classes */
+      .white {
+        color: white;
+        opacity: 0.7;
       }
 
       .hidden {
