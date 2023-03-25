@@ -25,12 +25,12 @@ const remoteImage =
         alt="Marisa and K"
       />
 
-      <!-- <figcaption id="main-heading">
+      <figcaption id="main-heading">
         <h1>
           <span class="white">marisa</span>
-          <br /><span>she/ella</span>
+          <!-- <br /><span>she/ella</span> -->
         </h1>
-      </figcaption> -->
+      </figcaption>
     </figure>
 
     <section>
@@ -49,6 +49,13 @@ const remoteImage =
         he is active, strong, and never needed surgery! This was the start of my
         curiosity, deep awe, and respect for the body's innate ability to heal.
       </p>
+      <div class="quote">
+        <h4>
+          "This was the start of my curiosity, deep awe, and respect for the
+          body's innate ability to heal."
+        </h4>
+      </div>
+
       <p>
         As a college student I studied physical therapy at the University of
         Connecticut graduating in 2004. At school I was passionate about
@@ -63,6 +70,13 @@ const remoteImage =
         importance of healthcare practitioners recognizing the racial and ethic
         differences when developing treatment plans.
       </p>
+      <div class="quote">
+        <h4>
+          "...our main mission(s) was not only to provide exceptional care for
+          all persons with pelvic floor dysfunction but also to empower the
+          community..."
+        </h4>
+      </div>
       <p>
         Knowing that I wanted to focus my career in pelvic health, I completed
         the course work through the Herman & Wallace Pelvic Rehabilitation
@@ -94,25 +108,19 @@ const remoteImage =
   br {
     height: 2rem;
   }
-  button {
-    padding: 0.5rem 2rem;
-    border-radius: 2px;
-    font-size: 0.9rem;
-    color: rgb(21, 21, 52);
-    font-weight: 500;
-    background-color: #e8d2d2;
-    border: none;
-    line-height: 1rem;
-  }
-
-  button:hover {
-    background-color: #cab6b6;
-  }
 
   h3 {
     font-weight: 600;
   }
 
+  .quote {
+    padding: 2rem 4rem 2rem 4rem;
+    font-size: 1.6rem;
+  }
+
+  figcaption {
+    margin-bottom: 0;
+  }
   #ask {
     padding-top: 2rem;
     display: flex;
@@ -141,16 +149,8 @@ const remoteImage =
     margin-bottom: 4rem;
   }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem var(--base-padding) 0.75rem var(--base-padding);
-    font-weight: 800;
-    line-height: 1rem;
-  }
-
   #main-heading {
-    margin-top: -5rem;
+    margin-top: -3rem;
     line-height: 1.25rem;
     text-align: right;
     padding-right: var(--base-padding);
