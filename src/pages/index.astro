@@ -1,60 +1,80 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import { Picture } from "@astrojs/image/components";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import PageHeader from "../components/PageHeader.astro";
+const remoteImage =
+  "https://res.cloudinary.com/dmstif28x/image/upload/v1677203891/eight_iwlrer.jpg";
 ---
 
 <Layout title="Welcome to Mariposa Wellness">
-  <header id="sub-nav">
-    <h3>Integrative Manual Therapy <br /> & Pelvic Health</h3>
-    <nav>
-      <div><span> ← previous</span></div>
-      <div><span>next →</span></div>
-    </nav>
-  </header>
+  <PageHeader
+    title="Integrative Manual Therapy"
+    desc=" & Pelvic Health"
+    next="about"
+    prev="services"
+  />
   <main>
     <figure>
-      <img
-        src="https://res.cloudinary.com/dmstif28x/image/upload/v1677203891/eight_iwlrer.jpg"
-        alt=""
+      <Picture
+        src={remoteImage}
+        widths={[200, 400, 800, 1000, 2400]}
+        aspectRatio="4:3"
+        sizes="100vw"
+        alt="The Google logo"
       />
+
       <figcaption id="main-heading">
-        <h1><span class="white">mariposa</span> <br /><span>wellness</span></h1>
+        <h1>
+          <span class="white">mariposa</span>
+          <br /><span>wellness</span>
+        </h1>
       </figcaption>
     </figure>
-    <hr />
+
     <section>
       <p>
         At Mariposa Wellness I combine a variety of manual medicine modalities
-        to treat the whole person. <br /><br />With an expertise in Pelvic
-        Health and almost 20 years experience as a physical therapist my goal is
-        to provide treatment to enhance your overall movement and function while
-        empowering you with knowledge regarding your body and particular
-        condition and techniques for self care.
+        to treat the whole person
+      </p>
+      <p>
+        With an expertise in Pelvic Health and almost 20 years experience as a
+        physical therapist my goal is to provide treatment to enhance your
+        overall movement and function while empowering you with knowledge
+        regarding your body and particular condition and techniques for self
+        care.
       </p>
     </section>
-    <hr />
+
     <section id="ask">
       <button>I would like to become a new patient.</button>
       <button>I would like to book an appointment.</button>
     </section>
-    <hr />
   </main>
+  <Footer />
 </Layout>
 
 <style>
+  br {
+    height: 2rem;
+  }
   button {
-    padding: 0.25rem 0;
+    padding: 0.5rem 2rem;
     border-radius: 2px;
     font-size: 0.9rem;
     color: rgb(21, 21, 52);
-    /* opacity: 0.5; */
     font-weight: 500;
-    width: 50%;
     background-color: #e8d2d2;
     border: none;
+    line-height: 1rem;
   }
 
   button:hover {
     background-color: #cab6b6;
+  }
+
+  h3 {
+    font-weight: 600;
   }
 
   #ask {
@@ -88,8 +108,7 @@ import Layout from "../layouts/Layout.astro"
   header {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 1rem 0.75rem 1rem;
-
+    padding: 2rem var(--base-padding) 0.75rem var(--base-padding);
     font-weight: 800;
     line-height: 1rem;
   }
@@ -98,13 +117,18 @@ import Layout from "../layouts/Layout.astro"
     margin-top: -5rem;
     line-height: 1.25rem;
     text-align: right;
-    padding-right: 1rem;
+    padding-right: var(--base-padding);
+  }
+
+  p:first-of-type {
+    padding-bottom: 0;
+    /* font-size: large; */
   }
 
   p {
-    margin: 2rem;
-    line-height: 1.1rem;
-    font-weight: 200;
+    padding: 1rem calc(2 * var(--base-padding));
+    line-height: 1.5rem;
+    font-weight: 400;
   }
 
   img {
@@ -112,7 +136,6 @@ import Layout from "../layouts/Layout.astro"
   }
 
   main {
-    margin: auto;
     height: 100vh;
     padding-bottom: 4rem;
   }
@@ -121,66 +144,35 @@ import Layout from "../layouts/Layout.astro"
     font-weight: 800;
     margin: 0;
   }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
-  }
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
 </style>
 <script defer>
-  const subNav = document.querySelector("#sub-nav")
+  const subNav = document.querySelector("#sub-nav");
   function fadeOutOnScroll(element) {
     if (!element) {
-      return
+      return;
     }
 
-    let distanceToTop = window.pageYOffset + element.getBoundingClientRect().top
+    let distanceToTop =
+      window.pageYOffset + element.getBoundingClientRect().top;
 
-    let elementHeight = element.offsetHeight
-    let scrollTop = document.documentElement.scrollTop
+    let elementHeight = element.offsetHeight;
+    let scrollTop = document.documentElement.scrollTop;
 
-    console.log({ distanceToTop, elementHeight, scrollTop })
+    console.log({ distanceToTop, elementHeight, scrollTop });
 
-    let opacity = 1
+    let opacity = 1;
 
     if (scrollTop > distanceToTop) {
-      opacity = 1 - (scrollTop - distanceToTop) / elementHeight
+      opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
     }
 
     if (opacity >= 0) {
-      element.style.opacity = opacity
+      element.style.opacity = opacity;
     }
   }
   function scrollHandler() {
-    fadeOutOnScroll(subNav)
+    fadeOutOnScroll(subNav);
   }
 
-  window.addEventListener("scroll", scrollHandler)
+  window.addEventListener("scroll", scrollHandler);
 </script>

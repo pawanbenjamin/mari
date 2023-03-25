@@ -1,0 +1,209 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import { Picture } from "@astrojs/image/components";
+
+const remoteImage =
+  "https://res.cloudinary.com/dmstif28x/image/upload/v1679756950/mari-karuna_bzbx9o.webp";
+---
+
+<Layout title="About Me">
+  <PageHeader title={"Marisa"} desc={"she/ella"} next={"next"} prev={"prev"} />
+  <main>
+    <figure>
+      <Picture
+        src={remoteImage}
+        widths={[200, 400, 800, 1000, 2400]}
+        aspectRatio="4:3"
+        sizes="100vw"
+        alt="Marisa and K"
+      />
+
+      <!-- <figcaption id="main-heading">
+        <h1>
+          <span class="white">marisa</span>
+          <br /><span>she/ella</span>
+        </h1>
+      </figcaption> -->
+    </figure>
+
+    <section>
+      <p>
+        My whole life, I have known that my path is to support others thrive in
+        their journey toward healing and wholeness. My interest in manual
+        therapy started when I was eight and my dad herniated a disc in his
+        back, developing sciatica that after a while made it really difficult
+        for him to move. For weeks he was mainly bedridden. I would bring him
+        hot packs in bed and try to lift his spirits. When my dad seemed at a
+        loss for what to do, my mom, a physical therapist, asked one of her
+        manual physical therapist buddies to help out. She would come to the
+        house, throw a mat on the floor, and treat my dad. I would watch in
+        fascination as my dad was able to move better and better after every
+        session. He was diligent with his exercises and now, over 30 years later
+        he is active, strong, and never needed surgery! This was the start of my
+        curiosity, deep awe, and respect for the body's innate ability to heal.
+      </p>
+      <p>
+        As a college student I studied physical therapy at the University of
+        Connecticut graduating in 2004. At school I was passionate about
+        advocating for women’s health and women’s right to choose and be
+        informed about all aspects of their health. Also, as one of the only
+        Latina’s and POC folks in the physical therapy and allied health
+        department, I was acutely aware of the disparities in health research
+        and access to healthcare among BIPOC communities. I completed my
+        graduation thesis on Psychosocial Barriers to Physical Activity in
+        Puerto Rican Women and published my research in the Journal of Strength
+        and Conditioning. I also gave lectures at local conferences on the
+        importance of healthcare practitioners recognizing the racial and ethic
+        differences when developing treatment plans.
+      </p>
+      <p>
+        Knowing that I wanted to focus my career in pelvic health, I completed
+        the course work through the Herman & Wallace Pelvic Rehabilitation
+        Institute and began a fulfilling career as a pelvic health physical
+        therapist. I have worked at the National Rehabilitation Institute, Kirk
+        Center for Health Living in the Chicagoland region, a specialty clinic
+        for pelvic floor dysfunction, and in 2012 I was the co-founder and
+        co-owner of Body Connect Health and Wellness in Washington DC. At Body
+        Connect one of our main missions was not only to provide exceptional
+        care for all persons with pelvic floor dysfunction but also to empower
+        the community through education classes on topics ranging from work
+        ergonomics, pre and postpartum wellness, to sexual health throughout the
+        lifespan.
+      </p>
+    </section>
+
+    <!-- <section id="ask">
+      <button>I would like to become a new patient.</button>
+      <button>I would like to book an appointment.</button>
+    </section> -->
+  </main>
+  <!-- <Footer /> -->
+</Layout>
+<style>
+  span {
+    color: rgb(209, 143, 209);
+    opacity: 0.8;
+  }
+
+  br {
+    height: 2rem;
+  }
+  button {
+    padding: 0.5rem 2rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    color: rgb(21, 21, 52);
+    font-weight: 500;
+    background-color: #e8d2d2;
+    border: none;
+    line-height: 1rem;
+  }
+
+  button:hover {
+    background-color: #cab6b6;
+  }
+
+  h3 {
+    font-weight: 600;
+  }
+
+  #ask {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    padding-bottom: 2rem;
+  }
+
+  nav {
+    text-align: right;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  nav span:hover {
+    opacity: 0.6;
+  }
+  .white {
+    color: white;
+    opacity: 0.8;
+  }
+
+  figure {
+    margin-bottom: 4rem;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem var(--base-padding) 0.75rem var(--base-padding);
+    font-weight: 800;
+    line-height: 1rem;
+  }
+
+  #main-heading {
+    margin-top: -5rem;
+    line-height: 1.25rem;
+    text-align: right;
+    padding-right: var(--base-padding);
+  }
+
+  p:first-of-type {
+    padding-bottom: 0;
+    /* font-size: large; */
+  }
+
+  p {
+    padding: 1rem calc(2 * var(--base-padding));
+    line-height: 1.5rem;
+    font-weight: 400;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  main {
+    height: 100vh;
+    padding-bottom: 4rem;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+</style>
+<script defer>
+  const subNav = document.querySelector("#sub-nav");
+  function fadeOutOnScroll(element) {
+    if (!element) {
+      return;
+    }
+
+    let distanceToTop =
+      window.pageYOffset + element.getBoundingClientRect().top;
+
+    let elementHeight = element.offsetHeight;
+    let scrollTop = document.documentElement.scrollTop;
+
+    console.log({ distanceToTop, elementHeight, scrollTop });
+
+    let opacity = 1;
+
+    if (scrollTop > distanceToTop) {
+      opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
+    }
+
+    if (opacity >= 0) {
+      element.style.opacity = opacity;
+    }
+  }
+  function scrollHandler() {
+    fadeOutOnScroll(subNav);
+  }
+
+  window.addEventListener("scroll", scrollHandler);
+</script>
