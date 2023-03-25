@@ -1,26 +1,26 @@
 ---
-import { Cloudinary } from "@cloudinary/url-gen";
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: "dmstif28x"
-  }
-});
+// import { Cloudinary } from "@cloudinary/url-gen";
+// const cld = new Cloudinary({
+//   cloud: {
+//     cloudName: "dmstif28x"
+//   }
+// });
 
-const { src, ...props } = Astro.props;
-interface Props {
-  src: string;
-  height: string;
-  width: string;
-  alt: string;
-}
+// const { src, ...props } = Astro.props;
+// interface Props {
+//   src: string;
+//   height: string;
+//   width: string;
+//   alt: string;
+// }
 
-let cldSrc = cld.image(src);
+// let cldSrc = cld.image(src);
 
-console.log(cldSrc.toURL());
+// console.log(cldSrc.toURL());
 
-if (src.startsWith("https://")) {
-  cldSrc.setDeliveryType("fetch");
-}
+// if (src.startsWith("https://")) {
+//   cldSrc.setDeliveryType("fetch");
+// }
 ---
 
-<img src={cldSrc.toURL()} loading="lazy" {...props} />
+<!-- <img src={cldSrc.toURL()} loading="lazy" {...props} /> -->
