@@ -1,7 +1,103 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import ServiceBlock from "../components/ServiceBlock.astro";
 import PageHeader from "../components/PageHeader.astro";
+
+const list1 = [
+  "Pregnancy related Back/ Hip Pain",
+  "Post-Partum urinary/ fecal incontinence",
+  "Diastasis Recti",
+  "Pelvic Organ Prolapse",
+  "C-Section Scar Treatment",
+  "Postural pain due to wearing, carrying, nursing baby",
+  "Symphysis pubis dysfunction (SPD)",
+  "Sexual Dysfunction",
+  "Sacro-iliac joint dysfunction",
+  "Pelvic instability"
+];
+
+const list2 = [
+  "Tissue preparation Pre-Gender affirming surgery",
+  "Post- Gender Affirming surgery rehabilitation",
+  "Pelvic pain",
+  "Difficulty using/ progressing dilators",
+  "Urinary incontinence",
+  "Voiding dysfunction",
+  "Scar pain",
+  "Pain with intercourse",
+  "Urinary dysfunction",
+  "Dyspareunia (pain with intercourse)",
+  "Recurrent urinary tract infections",
+  "Decreased sexual response",
+  "Vaginoplasty"
+];
+
+const list3 = [
+  "Vulvodynia/Vestibulodynia",
+  "Interstitial Cystitis/Painful Bladder Syndrome",
+  "Pudendal Neuralgia",
+  "Endometriosis",
+  "Urgency/ Frequent Urination",
+  "Urinary/ Fecal Incontinence",
+  "Abdominal pain syndrome",
+  "Chronic Pelvic Pain (women)",
+  "Constipation",
+  "Coccyx pain",
+  "Vaginissmus",
+  "Clitoral pain",
+  "Sacral pain",
+  "Anal/rectal pain",
+  "Pain with sex",
+  "Fertility problems due to scar tissue",
+  "Post surgical care for any pelvic or abdominal surgery",
+  "Anorgasmia",
+  "Recurrent UTIs"
+];
+
+const list4 = [
+  "Chronic Pelvic Pain Syndrome/male pelvic pain",
+  "Nonbacterial chronic prostatitis",
+  "Urgency/ Frequent Urination",
+  "Urinary/ Fecal Incontinence",
+  "Sexual dysfunction",
+  "Abdominal pain syndrome",
+  "Constipation",
+  "Erectile Dysfunction",
+  "Interstitial Cystitis/Painful Bladder Syndrome",
+  "Pudendal Neuralgia",
+  "Coccyx pain",
+  "Penile/ Testicular pain",
+  "Penile pain",
+  "Anal/ rectal pain",
+  "Post-ejaculatory pain",
+  "Post prostatectomy pain"
+];
+
+const list5 = [
+  "Carpal Tunnel Syndrome",
+  "Chronic or Acute Musculoskeletal pain",
+  "Fibromyalgia",
+  "Foot and Ankle Pain",
+  "Headaches",
+  "Hip Pain",
+  "Knee Pain",
+  "Low Back Pain",
+  "Migraines",
+  "Myofascial pain syndrome",
+  "Neck Pain",
+  "Shoulder Pain",
+  "Sciatica",
+  "Scoliosis",
+  "Femoral-acetabular impingement"
+];
+
+const list6 = [
+  "How to care for the pregnant body",
+  "Physical therapy considerations for healing postpartum",
+  "Sexual health throughout the lifespan",
+  "How to manage prolapse",
+  "How to manage incontinence"
+];
 ---
 
 <Layout title="services">
@@ -10,5 +106,42 @@ import PageHeader from "../components/PageHeader.astro";
     desc="some services"
     next="treatments"
     prev="about"
+  />
+
+  <ServiceBlock
+    title="Prenatal Postpartum"
+    desc="During pregnancy and in the postpartum phase, changes in hormones, the alignment of the pregnant person (and fetus), and the birthing process itself can potentially cause muscle, joint, nerve, bladder and bowel problems. At Mariposa wellness our goals for treatment during pregnancy and postpartum are to improve fetal and parent alignment to allow for greater ease with labor and delivery, and help accelerate the new parent’s recovery after childbirth."
+    treatmentList={list1}
+    imageUrl="https://res.cloudinary.com/dmstif28x/image/upload/v1679761121/looking-at-baby_a6u524.jpg"
+  />
+  <ServiceBlock
+    title="gender inclusive pelvic health"
+    desc="At Mariposa wellness we are dedicated to inclusive rehabilitation for patients across the gender spectrum."
+    treatmentList={list2}
+    imageUrl="https://res.cloudinary.com/dmstif28x/image/upload/v1679761118/gender_dpw5ao.jpg"
+  />
+  <ServiceBlock
+    title="female pevlic health"
+    desc="At Mariposa Wellness we specialize in the treatment of the following conditions specific to a womans uro-gynecological, sexual, and colo-rectal function, pre-and post-pregnancy, and chronic abdominal and pelvic pain syndromes. As Licensed Physical Therapists with advanced training in pelvic floor rehabilitation, we can help to normalize the myofascial tissue texture around the body, promote pelvic alignment, and restore normal functioning in the organs of the abdomino-pelvic area."
+    treatmentList={list3}
+    imageUrl="https://res.cloudinary.com/dmstif28x/image/upload/v1679761120/laugh_bg8hqj.jpg"
+  />
+  <ServiceBlock
+    title="male pelvic health"
+    desc="Our specialized Pelvic Floor Physical Therapists also treat conditions that are specific to the health of male urological and sexual function. For men, fascial restrictions in the pelvic floor and pelvic girdle can cause sexual dysfunction, difficulty with urination and bowel movements, or pelvic pain. Fascial restrictions in the male pelvis are often caused by poor postural alignment or scarring from abdominal or pelvic surgeries. Our Pelvic Floor Physical Therapists will help to reduce adhered scar tissue restrictions, and will also help to improve flexibility and normalize function to the urinary and reproductive systems."
+    treatmentList={list4}
+    imageUrl="https://res.cloudinary.com/dmstif28x/image/upload/v1679761124/seven_jyfpr8.jpg"
+  />
+  <ServiceBlock
+    title="chronic pain"
+    desc="Chronic pain, like neck or back pain, can be caused by poor posture, accidents, falls, emotional trauma, surgeries and disease. It can significantly impact a person’s life and function and can be crippling to the mind, body and spirit. This is why it is extremely important to address these conditions holistically. At Mariposa Wellness we use integrative manual therapy techniques including Core Synchronism, Visceral Manipulation, and Myofascial Release to effectively treat persistent pain, release blocked emotional tension and improve postural and functionality in the body."
+    treatmentList={list5}
+    imageUrl="https://res.cloudinary.com/dmstif28x/image/upload/v1679761120/eight_cnxcip.jpg"
+  />
+  <ServiceBlock
+    title="Community Education Clases"
+    desc="If you are interested in having a physical therapist come out and talk with your new parents group please email admin@mariposawellnessllc.com"
+    treatmentList={list6}
+    imageUrl=""
   />
 </Layout>

@@ -1,0 +1,37 @@
+---
+import { Picture } from "@astrojs/image/components";
+
+export interface Props {
+  title: string;
+  desc: string;
+  treatmentList: string[];
+  imageUrl: string;
+}
+
+const { title, desc, treatmentList, imageUrl } = Astro.props;
+---
+
+<div>
+  {
+    imageUrl !== "" && (
+      <Picture
+        src={imageUrl}
+        widths={[200, 400, 800, 1000, 2400]}
+        aspectRatio="4:3"
+        sizes="100vw"
+        alt="Marisa with Patient"
+      />
+    )
+  }
+  <h2>{title}</h2>
+  <p>{desc}</p>
+  <ul>
+    {
+      treatmentList !== undefined &&
+        treatmentList.map((treatment) => {
+          return <li>{treatment}</li>;
+        })
+    }
+  </ul>
+</div>
+<style></style>

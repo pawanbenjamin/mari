@@ -1,16 +1,16 @@
 ---
-let visible = false
+let visible = false;
 ---
 
 <header>
   <div id="overlaid-menu" class="hidden">
     <ul>
-      <li><h2>home</h2></li>
-      <li><h2>about</h2></li>
-      <li><h2>treatments</h2></li>
-      <li><h2>services</h2></li>
-      <li><h2>faq</h2></li>
-      <li><h2>contact</h2></li>
+      <a href="/"><li><h2>home</h2></li></a>
+      <a href="/about"> <li><h2>about</h2></li></a>
+      <a href="/treatments"> <li><h2>treatments</h2></li></a>
+      <a href="/services"> <li><h2>services</h2></li></a>
+      <a href="/faq"> <li><h2>faq</h2></li></a>
+      <a href="/contact"> <li><h2>contact</h2></li></a>
     </ul>
   </div>
   <div id="burger-box">
@@ -21,6 +21,7 @@ let visible = false
 
   <span>contact</span>
 </header>
+
 <div id="name">
   <h1>mariposa</h1>
   <h1>wellness</h1>
@@ -173,43 +174,44 @@ let visible = false
   }
 </style>
 <script defer>
-  const name = document.querySelector("#name")
+  const name = document.querySelector("#name");
   function fadeOutOnScroll(element) {
     if (!element) {
-      return
+      return;
     }
 
-    let distanceToTop = window.pageYOffset + element.getBoundingClientRect().top
+    let distanceToTop =
+      window.pageYOffset + element.getBoundingClientRect().top;
 
-    let elementHeight = element.offsetHeight
-    let scrollTop = document.documentElement.scrollTop
+    let elementHeight = element.offsetHeight;
+    let scrollTop = document.documentElement.scrollTop;
 
-    console.log({ distanceToTop, elementHeight, scrollTop })
+    console.log({ distanceToTop, elementHeight, scrollTop });
 
-    let opacity = 1
+    let opacity = 1;
 
     if (scrollTop > distanceToTop) {
-      opacity = 1 - (scrollTop - distanceToTop) / elementHeight
+      opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
     }
 
     if (opacity >= 0) {
-      element.style.opacity = opacity
+      element.style.opacity = opacity;
     }
   }
   function scrollHandler() {
-    fadeOutOnScroll(name)
+    fadeOutOnScroll(name);
   }
 
-  window.addEventListener("scroll", scrollHandler)
+  window.addEventListener("scroll", scrollHandler);
 
   // visibility logic
 
-  const menu = document.querySelector("#overlaid-menu")
-  const contact = document.querySelector("span")
-  const burger = document.querySelector("input")
+  const menu = document.querySelector("#overlaid-menu");
+  const contact = document.querySelector("span");
+  const burger = document.querySelector("input");
   burger.addEventListener("click", (e) => {
-    menu.classList.toggle("hidden")
-    menu.classList.toggle("fade-out")
-    contact.classList.toggle("hidden")
-  })
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("fade-out");
+    contact.classList.toggle("hidden");
+  });
 </script>
