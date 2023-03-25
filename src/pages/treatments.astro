@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import { Picture } from "@astrojs/image/components";
 import PageHeader from "../components/PageHeader.astro";
+
+const pevlFloor =
+  "https://res.cloudinary.com/dmstif28x/image/upload/v1679761122/stom2_oazftp.jpg";
 ---
 
 <Layout title="treatments">
@@ -10,5 +13,66 @@ import PageHeader from "../components/PageHeader.astro";
     desc="some treatments"
     next="faq"
     prev="services"
+  />
+  <section>
+    <h2>Title</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+      consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
+      maxime suscipit iure exercitationem ab minima asperiores cum, rem,
+      deserunt laborum deleniti!
+    </p>
+    <a href=""><span>Link</span></a>
+  </section>
+  <section>
+    <h2>Title</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+      consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
+      maxime suscipit iure exercitationem ab minima asperiores cum, rem,
+      deserunt laborum deleniti!
+    </p>
+    <a href=""><span>Link</span></a>
+  </section>
+  <section>
+    <Picture
+      src={pevlFloor}
+      widths={[200, 400, 800, 1000, 2400]}
+      aspectRatio="4:3"
+      sizes="100vw"
+      alt="Marisa with Patient"
+    />
+    <h2>Title</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+      consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
+      maxime suscipit iure exercitationem ab minima asperiores cum, rem,
+      deserunt laborum deleniti!
+    </p>
+    <a href=""><span>Link</span></a>
+  </section>
+  <section>
+    <Picture
+      src={pevlFloor}
+      widths={[200, 400, 800, 1000, 2400]}
+      aspectRatio="4:3"
+      sizes="100vw"
+      alt="Marisa with Patient"
+    />
+    <h2>Title</h2>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
+      consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
+      maxime suscipit iure exercitationem ab minima asperiores cum, rem,
+      deserunt laborum deleniti!
+    </p>
+    <a href=""><span>Link</span></a>
+  </section>
+  <Picture
+    src={pevlFloor}
+    widths={[200, 400, 800, 1000, 2400]}
+    aspectRatio="4:3"
+    sizes="100vw"
+    alt="Marisa with Patient"
   />
 </Layout>
