@@ -11,27 +11,104 @@ export interface Props {
 const { title, desc, treatmentList, imageUrl } = Astro.props;
 ---
 
-<div>
+<div class="container">
   {
     imageUrl !== "" && (
       <Picture
         src={imageUrl}
         widths={[200, 400, 800, 1000, 2400]}
         aspectRatio="4:3"
-        sizes="100vw"
+        sizes="92vw"
         alt="Marisa with Patient"
       />
     )
   }
-  <h2 class="bp">{title}</h2>
-  <p class="bp">{desc}</p>
-  <ul class="bp">
-    {
-      treatmentList !== undefined &&
-        treatmentList.map((treatment) => {
-          return <li>{treatment}</li>;
-        })
-    }
-  </ul>
+  <details>
+    <summary>
+      {title}
+    </summary>
+    <p class="bp">{desc}</p>
+    <details class="indented">
+      <summary>Common Conditions Treated</summary>
+      <ul class="bp">
+        {
+          treatmentList !== undefined &&
+            treatmentList.map((treatment) => {
+              return <li>{treatment}</li>;
+            })
+        }
+      </ul>
+    </details>
+  </details>
 </div>
-<style></style>
+<style>
+  .container {
+    margin: var(--base-padding);
+  }
+
+  .indtented {
+    margin-left: 4rem;
+  }
+  details {
+    /* width: 50%; */
+    margin: 0 auto;
+    /* background: #282828; */
+    margin-bottom: 0.5rem;
+
+    /* border-radius: 5px; */
+    overflow: hidden;
+  }
+
+  summary {
+    font-family: "Manrope", sans-serif;
+    font-weight: 600;
+
+    padding: 1rem;
+    display: block;
+
+    /* background: #333; */
+    padding-left: 2.2rem;
+    position: relative;
+    cursor: pointer;
+  }
+
+  summary:before {
+    content: "";
+    border-width: 0.4rem;
+    border-style: solid;
+    border-color: transparent transparent transparent #afaeb9;
+
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+    transform: rotate(0);
+    transform-origin: 0.2rem 50%;
+    transition: 0.25s transform ease;
+  }
+
+  /* THE MAGIC 🧙‍♀️ */
+  details[open] > summary:before {
+    transform: rotate(90deg);
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details > ul {
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+  }
+  /* details {
+    margin: 1.6rem;
+  }
+
+  summary {
+    font-weight: 600;
+    font-family: "Manrope", sans-serif;
+  }
+
+  details summary > * {
+    display: inline;
+  } */
+</style>
