@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { astroImageTools } from "astro-imagetools";
 
 import image from "@astrojs/image";
 
@@ -8,6 +9,6 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  integrations: [image()],
+  integrations: [image(), astroImageTools],
   adapter: netlify()
 });
