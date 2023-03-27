@@ -12,25 +12,26 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
 ---
 
 <div class="container">
-  {
-    imageUrl !== "" && (
-      <Picture
-        src={imageUrl}
-        widths={[200, 400, 800, 1000, 2400]}
-        aspectRatio="4:3"
-        sizes="92vw"
-        alt="Marisa with Patient"
-      />
-    )
-  }
+  {imageUrl !== "" && <img src={imageUrl} alt="Marisa with Patient" />}
   <details>
     <summary>
       {title}
     </summary>
     <p class="bp">{desc}</p>
     <details class="indented">
-      <summary>Common Conditions Treated</summary>
-      <ul class="bp">
+      {
+        title === "community education classes" ? (
+          <summary id="sum2" class="indent">
+            Class Topics Include
+          </summary>
+        ) : (
+          <summary id="sum2" class="indent">
+            Common Conditions Treated
+          </summary>
+        )
+      }
+
+      <ul class="double-indent">
         {
           treatmentList !== undefined &&
             treatmentList.map((treatment) => {
@@ -46,9 +47,23 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
     margin: var(--base-padding);
   }
 
-  .indtented {
-    margin-left: 4rem;
+  .indent {
+    margin-left: calc(var(--base-padding));
   }
+
+  .double-indent {
+    margin-left: calc(var(--base-padding) * 2);
+  }
+
+  #sum2 {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+
+  img {
+    width: 100%;
+  }
+
   details {
     /* width: 50%; */
     margin: 0 auto;
