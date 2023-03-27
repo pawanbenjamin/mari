@@ -32,11 +32,13 @@ import PageHeader from "../components/PageHeader.astro";
       </ul>
       <p>
         <h4>Accessibility Rates</h4>
-        At Mariposa Wellness we understand the exceptional cost of medical care especially
-        for folks looking to find solutions for health and healing outside of the
-        traditional medical model. Because of this we keep 15% of our schedule available
-        for folks needing treatment but unable to pay the full cost. If you are interested
-        this option please
+        <p>
+          At Mariposa Wellness we understand the exceptional cost of medical
+          care especially for folks looking to find solutions for health and
+          healing outside of the traditional medical model. Because of this we
+          keep 15% of our schedule available for folks needing treatment but
+          unable to pay the full cost. If you are interested this option please
+        </p>
       </p>
     </section>
     <section class="bp">
@@ -66,5 +68,13 @@ import PageHeader from "../components/PageHeader.astro";
 
   .container {
     margin-bottom: 4rem;
+  }
+
+  section > h2,
+  p,
+  ul,
+  h4 {
+    margin-right: var(--base-padding);
+    margin-left: var(--base-padding);
   }
 </style>

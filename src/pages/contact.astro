@@ -11,7 +11,9 @@ import hands from "/src/images/hands-on-tummy.jpg";
     <section class="returning">
       <h3>Returning Patients</h3>
       <p>Follow the link below</p>
-      <button>Book Appointment</button>
+      <a href="https://bchwbooking.clientsecure.me/">
+        <button>Book Appointment</button></a
+      >
     </section>
     <section class="new">
       <h3>New Patients</h3>
@@ -30,6 +32,14 @@ import hands from "/src/images/hands-on-tummy.jpg";
   </div>
 </Layout>
 <style>
+  button {
+    width: 100%;
+  }
+  a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -90,7 +100,7 @@ import hands from "/src/images/hands-on-tummy.jpg";
   contactForm.addEventListener("submit", async (e) => {
     // code fragment
     e.preventDefault();
-
+    alert("You're email will be sent! Thank you!");
     // emailjs
     //   .sendForm(
     //     import.meta.env.PUBLIC_SERVICE,

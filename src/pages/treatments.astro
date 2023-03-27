@@ -3,57 +3,109 @@ import Layout from "../layouts/Layout.astro";
 import { Picture } from "@astrojs/image/components";
 import PageHeader from "../components/PageHeader.astro";
 
-const pevlFloor =
-  "https://res.cloudinary.com/dmstif28x/image/upload/v1679761122/stom2_oazftp.jpg";
+import pelvicFloor from "../images/stom2.jpg";
+import myofacil from "../images/four-1.jpg";
 ---
 
 <Layout title="treatments">
   <PageHeader title="treatment" desc="methods" next="faq" prev="services" />
   <div class="content">
     <section class="bp">
-      <h2>Title</h2>
+      <h2>Core Synchronism</h2>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
-        consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
-        maxime suscipit iure exercitationem ab minima asperiores cum, rem,
-        deserunt laborum deleniti!
+        Core Synchronism is a system of hand medicine designed to assist nature
+        in establishing harmony with all parts of the organism. It is not
+        pathology specific. It is a mechanical system designed to restore
+        balance, which results in activating an individual’s self-healing
+        ability
       </p>
-      <a href=""><span>Link</span></a>
+      <a href="http://coresynchronism.org/"><span>More Info</span></a>
     </section>
     <section class="bp">
-      <h2>Title</h2>
+      <h2>Visceral Manipulation</h2>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
-        consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
-        maxime suscipit iure exercitationem ab minima asperiores cum, rem,
-        deserunt laborum deleniti!
+        Visceral Manipulation uses an in depth understanding of the anatomy in
+        order to address fascial restrictions around the organ systems. Visceral
+        manipulation can be utilized to treat a number of different symptoms
+        from chronic constipation, bowel/bladder dysfunction, painful periods,
+        musculoskeletal pain, infertility and more.
       </p>
-      <a href=""><span>Link</span></a>
+      <a href="https://www.barralinstitute.com/therapies/index.php"
+        ><span>Barral Institute Info</span></a
+      >
     </section>
-    <section>
-      <div class="picture"></div>
+    <section class="bp">
+      <img src={pelvicFloor} alt="mari with patient" />
+      <h2>Pelvic Floor Physical Therapy</h2>
 
-      <h2 class="bp">Title</h2>
-      <p class="bp">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
-        consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
-        maxime suscipit iure exercitationem ab minima asperiores cum, rem,
-        deserunt laborum deleniti!
+      <p>
+        Pelvic floor physical therapy address the whole body with a deeper
+        understanding of the pelvic floor muscles, nerves, organs, and function.
+        As a pelvic floor physical therapist my goal is to empower each person
+        to understand how their pelvic floor functions and to support them
+        reaching their goals. The pelvic floor is a truly special area of the
+        body because it is the only area in the body where our skeletal muscle
+        have a direct impact on our organs (bowel, bladder, uterus, prostate).
+        Therefor dysfunction at the pelvic floor can lead to bowel/bladder
+        incontinence, retention, constipation, sexual dysfunction, pain, and
+        more. Also, because the pelvic floor is one of our core muscles in can
+        often be a missing link in persistent back pain, sciatica, and hip pain.
       </p>
-      <a href=""><span class="bp">Link</span></a>
     </section>
-    <section>
-      <div class="picture"></div>
-      <h2 class="bp">Title</h2>
-      <p class="bp">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem
-        consectetur fuga iure. Sapiente, reiciendis velit molestiae quas quis
-        maxime suscipit iure exercitationem ab minima asperiores cum, rem,
-        deserunt laborum deleniti!
+    <section class="bp">
+      <img src={myofacil} alt="mari with patient" />
+      <h2>Myofascial Release</h2>
+      <p>
+        Myofascial release techniques address restrictions in the body's
+        connective tissue matrix. Connective tissue, or fascia, is a network of
+        tissue that connects our muscles, organs, and bones. Thickening of the
+        fascia restricts motion in tissue which can lead to pain and
+        dysfunction. Myofascial release uses a variety of tissue manipulation
+        techniques to promote mobility in the fascia to decrease pain and
+        improve movement.
       </p>
-      <a href=""><span class="bp">Link</span></a>
     </section>
-    <div class="picture"></div>
   </div>
 </Layout>
-<style></style>
+<style>
+  img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: var(--base-padding);
+    margin-right: var(--base-padding);
+  }
+
+  h2 {
+    font-family: "Manrope", sans-serif;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  span {
+    font-weight: 600;
+    display: inline-block;
+    margin: 1rem;
+    font-family: "Manrope", sans-serif;
+  }
+
+  span:hover {
+    opacity: 0.6;
+  }
+</style>
