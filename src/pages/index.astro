@@ -37,13 +37,24 @@ import remoteImage from "../images/eight.jpg";
     </section>
 
     <section id="ask">
-      <button>I would like to become a new patient.</button>
-      <button>I would like to book an appointment.</button>
+      <a href="/contact"
+        ><button>I would like to become a new patient.</button></a
+      >
+      <a href="https://bchwbooking.clientsecure.me/"
+        ><button>I would like to book an appointment.</button></a
+      >
     </section>
   </main>
 </Layout>
 
 <style>
+  a {
+    width: 100%;
+  }
+  button {
+    width: 100%;
+  }
+
   h3 {
     font-weight: 600;
   }
@@ -56,6 +67,7 @@ import remoteImage from "../images/eight.jpg";
     align-items: center;
     gap: 0.6rem;
     padding-bottom: 2rem;
+    margin: 0 calc(var(--base-padding) * 2);
   }
 
   figure {
