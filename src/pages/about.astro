@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
 
 import remoteImage from "../images/mari-karuna.webp";
+import CldImage from "../components/CldImage.astro";
 ---
 
 <Layout title="About Me">
@@ -15,8 +16,12 @@ import remoteImage from "../images/mari-karuna.webp";
   />
   <main>
     <figure>
-      <img src={remoteImage} alt="Marisa and K" />
-
+      <CldImage
+        src={"mari/mari-karuna_gnlu1y.webp"}
+        alt="mari and k"
+        height="auto"
+        width="auto"
+      />
       <figcaption id="main-heading">
         <h1>
           <span class="white">marisa</span>

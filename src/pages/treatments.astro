@@ -3,8 +3,7 @@ import Layout from "../layouts/Layout.astro";
 
 import PageHeader from "../components/PageHeader.astro";
 
-import pelvicFloor from "../images/stom2.jpg";
-import myofacil from "../images/four-1.jpg";
+import CldImage from "../components/CldImage.astro";
 ---
 
 <Layout title="treatments">
@@ -35,7 +34,12 @@ import myofacil from "../images/four-1.jpg";
       >
     </section>
     <section class="bp">
-      <img src={pelvicFloor} alt="mari with patient" />
+      <CldImage
+        src={"mari/stom2_u3amcw.jpg"}
+        width="auto"
+        height="auto"
+        alt="Marisa and Patient"
+      />
       <h2>Pelvic Floor Physical Therapy</h2>
 
       <p>
@@ -53,7 +57,12 @@ import myofacil from "../images/four-1.jpg";
       </p>
     </section>
     <section class="bp">
-      <img src={myofacil} alt="mari with patient" />
+      <CldImage
+        src={"mari/four-1_fmzwof.jpg"}
+        width="auto"
+        height="auto"
+        alt="Marisa and Patient"
+      />
       <h2>Myofascial Release</h2>
       <p>
         Myofascial release techniques address restrictions in the body's

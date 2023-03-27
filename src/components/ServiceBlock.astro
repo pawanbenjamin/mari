@@ -1,4 +1,6 @@
 ---
+import CldImage from "./CldImage.astro";
+
 export interface Props {
   title: string;
   desc: string;
@@ -10,7 +12,13 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
 ---
 
 <div class="container">
-  {imageUrl !== "" && <img src={imageUrl} alt="Marisa with Patient" />}
+  <div class="img-container">
+    {
+      imageUrl !== "" && (
+        <CldImage src={imageUrl} alt={title} height="auto" width="auto" />
+      )
+    }
+  </div>
   <details>
     <summary>
       {title}
@@ -58,8 +66,14 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
     font-style: italic;
   }
 
+  .img-container {
+    display: grid;
+  }
+
   img {
-    width: 100%;
+    justify-self: center;
+    width: 84%;
+    align-self: center;
   }
 
   details {
@@ -69,7 +83,7 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
     margin-bottom: 0.5rem;
 
     /* border-radius: 5px; */
-    overflow: hidden;
+    overflow: none;
   }
 
   summary {

@@ -1,26 +1,24 @@
 ---
-// import { Cloudinary } from "@cloudinary/url-gen";
-// const cld = new Cloudinary({
-//   cloud: {
-//     cloudName: "dmstif28x"
-//   }
-// });
+import { Cloudinary } from "@cloudinary/url-gen";
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: import.meta.env.PUBLIC_CLOUDINARY_CLOUD_NAME
+  }
+});
 
-// const { src, ...props } = Astro.props;
-// interface Props {
-//   src: string;
-//   height: string;
-//   width: string;
-//   alt: string;
-// }
+const { src, ...props } = Astro.props;
+let cldSrc = cld.image(src).format("auto");
 
-// let cldSrc = cld.image(src);
-
-// console.log(cldSrc.toURL());
-
-// if (src.startsWith("https://")) {
-//   cldSrc.setDeliveryType("fetch");
-// }
+//   .delivery("q_auto").resize(`c_crop,w_${props.width},h_${props.height},g_face`);
+if (src.startsWith("https://")) {
+  cldSrc.setDeliveryType("fetch");
+}
+interface Props {
+  src: string;
+  width: string;
+  height: string;
+  alt: string;
+}
 ---
 
-<!-- <img src={cldSrc.toURL()} loading="lazy" {...props} /> -->
+<img src={cldSrc.toURL()} loading="lazy" {...props} />
