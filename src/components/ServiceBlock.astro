@@ -24,20 +24,16 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
       {title}
     </summary>
     <p class="bp">{desc}</p>
-    <details class="indented">
+    <details>
       {
         title === "community education classes" ? (
-          <summary id="sum2" class="indent">
-            Class Topics Include
-          </summary>
+          <summary id="sum2">Class Topics Include</summary>
         ) : (
-          <summary id="sum2" class="indent">
-            Common Conditions Treated
-          </summary>
+          <summary id="sum2">Common Conditions Treated</summary>
         )
       }
 
-      <ul class="double-indent">
+      <ul>
         {
           treatmentList !== undefined &&
             treatmentList.map((treatment) => {
@@ -58,7 +54,7 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
   }
 
   .double-indent {
-    margin-left: calc(var(--base-padding) * 2);
+    margin-left: calc(var(--base-padding));
   }
 
   #sum2 {
@@ -78,7 +74,7 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
 
   details {
     /* width: 50%; */
-    margin: 0 auto;
+    margin: 0;
     /* background: #282828; */
     margin-bottom: 0.5rem;
 
@@ -100,13 +96,13 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
     font-family: "Manrope", sans-serif;
     font-weight: 600;
 
+    /* margin-left: var(--base-padding); */
     padding: 1rem;
     display: block;
 
     /* background: #333; */
     padding-left: 2.2rem;
     position: relative;
-    cursor: pointer;
   }
 
   summary:before {
@@ -130,6 +126,10 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
 
   details summary::-webkit-details-marker {
     display: none;
+  }
+
+  details {
+    margin-left: var(--base-padding);
   }
 
   details > ul {
