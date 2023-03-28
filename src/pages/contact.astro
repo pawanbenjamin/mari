@@ -53,12 +53,19 @@ import PageHeader from "../components/PageHeader.astro";
   input {
     border: none;
     background: none;
+    font-size: 1rem;
+    height: 1.4rem;
+  }
+
+  input:focus {
+    outline: none;
   }
 
   .returning {
     margin-top: var(--base-padding);
     display: flex;
     flex-direction: column;
+    gap: 1rem;
   }
 
   .new {
