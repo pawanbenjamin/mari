@@ -26,7 +26,7 @@ import PageHeader from "../components/PageHeader.astro";
     </section>
     <section class="bp">
       <h2>Fees</h2>
-      <ul class="bp">
+      <ul class="bp" id="fee">
         <li>90 Min Evaluation: $405</li>
         <li>55 minute treatment: $220</li>
       </ul>
@@ -61,6 +61,9 @@ import PageHeader from "../components/PageHeader.astro";
   </div>
 </Layout>
 <style>
+  #fee {
+    margin-top: calc(var(--base-padding) * -1);
+  }
   h2,
   h4 {
     font-family: "Manrope", sans-serif;

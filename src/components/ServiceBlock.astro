@@ -85,6 +85,16 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
     /* border-radius: 5px; */
     overflow: none;
   }
+  @keyframes details-show {
+    from {
+      opacity: 0;
+      transform: var(--details-translate, translateY(-0.5em));
+    }
+  }
+
+  details[open] > *:not(summary) {
+    animation: details-show 150ms ease-in-out;
+  }
 
   summary {
     font-family: "Manrope", sans-serif;
