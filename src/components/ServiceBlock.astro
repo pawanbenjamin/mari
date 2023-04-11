@@ -18,33 +18,38 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
         <CldImage src={imageUrl} alt={title} height="auto" width="auto" />
       )
     }
-  </div>
-  <details>
-    <summary>
-      {title}
-    </summary>
-    <p class="bp">{desc}</p>
     <details>
-      {
-        title === "community education classes" ? (
-          <summary id="sum2">Class Topics Include</summary>
-        ) : (
-          <summary id="sum2">Common Conditions Treated</summary>
-        )
-      }
-
-      <ul>
+      <summary>
+        {title}
+      </summary>
+      <p class="bp">{desc}</p>
+      <details>
         {
-          treatmentList !== undefined &&
-            treatmentList.map((treatment) => {
-              return <li>{treatment}</li>;
-            })
+          title === "community education classes" ? (
+            <summary id="sum2">class topics include</summary>
+          ) : (
+            <summary id="sum2">common conditions treated</summary>
+          )
         }
-      </ul>
+
+        <ul class="bp">
+          {
+            treatmentList !== undefined &&
+              treatmentList.map((treatment) => {
+                return <li>{treatment}</li>;
+              })
+          }
+        </ul>
+      </details>
     </details>
-  </details>
+  </div>
 </div>
 <style>
+  p.bp,
+  ul.bp {
+    margin-top: -1rem;
+  }
+
   .container {
     margin: var(--base-padding);
   }
@@ -74,9 +79,8 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
 
   details {
     /* width: 50%; */
-    margin: 0;
+    margin-top: -0.5rem;
     /* background: #282828; */
-    margin-bottom: 0.5rem;
 
     /* border-radius: 5px; */
     overflow: none;

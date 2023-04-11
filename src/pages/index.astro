@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
-import remoteImage from "../images/eight.jpg";
 
 import CldImage from "../components/CldImage.astro";
 ---
@@ -79,6 +78,9 @@ import CldImage from "../components/CldImage.astro";
   }
 
   figure {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
     margin-bottom: 4rem;
   }
 
@@ -110,6 +112,16 @@ import CldImage from "../components/CldImage.astro";
     font-size: 3rem;
     font-weight: 800;
     margin: 0;
+  }
+  @media (min-width: 800px) {
+    img {
+      height: 80%;
+      width: 80svh;
+    }
+
+    section {
+      width: 80svh;
+    }
   }
 </style>
 <script defer>
