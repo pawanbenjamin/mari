@@ -7,14 +7,14 @@ import PageHeader from "../components/PageHeader.astro";
   <PageHeader title="" desc="contact" next="home" prev="faq" />
   <div class="container">
     <section class="returning">
-      <h3>Returning Patients</h3>
+      <h3>returning patients</h3>
 
       <a href="https://bchwbooking.clientsecure.me/">
-        <button>Book Appointment</button></a
+        <button>book appointment</button></a
       >
     </section>
     <section class="new">
-      <h3>New Patients</h3>
+      <h3>new patients</h3>
       <p>
         Please fill out the form below and we will get back to you as soon as
         possible!
@@ -24,12 +24,15 @@ import PageHeader from "../components/PageHeader.astro";
         <input type="email" name="email" placeholder="email" />
         <input type="text" name="subject" placeholder="subject" />
         <input type="text" name="message" placeholder="message" />
-        <button class="sub-but" type="submit">Submit</button>
+        <button class="sub-but" type="submit">submit</button>
       </form>
     </section>
   </div>
 </Layout>
 <style>
+  h3 {
+    border-bottom: 1px solid black;
+  }
   button {
     width: 100%;
   }
