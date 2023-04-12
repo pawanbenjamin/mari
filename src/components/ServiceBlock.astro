@@ -11,28 +11,28 @@ export interface Props {
 const { title, desc, treatmentList, imageUrl } = Astro.props;
 ---
 
-<div class="container">
-  <div class="img-container">
-    {
-      imageUrl !== "" && (
-        <CldImage src={imageUrl} alt={title} height="auto" width="auto" />
-      )
-    }
-    <details>
-      <summary>
-        {title}
-      </summary>
-      <p class="bp">{desc}</p>
+<div class="main">
+  {
+    imageUrl !== "" && (
+      <CldImage src={imageUrl} alt={title} height="auto" width="auto" />
+    )
+  }
+  <details>
+    <summary>
+      {title}
+    </summary>
+    <p>
+      {desc}
       <details>
         {
           title === "community education classes" ? (
-            <summary id="sum2">class topics include</summary>
+            <summary>class topics include</summary>
           ) : (
-            <summary id="sum2">common conditions treated</summary>
+            <summary>common conditions treated</summary>
           )
         }
 
-        <ul class="bp">
+        <ul>
           {
             treatmentList !== undefined &&
               treatmentList.map((treatment) => {
@@ -41,115 +41,50 @@ const { title, desc, treatmentList, imageUrl } = Astro.props;
           }
         </ul>
       </details>
-    </details>
-  </div>
+    </p>
+  </details>
+  <hr />
 </div>
+
 <style>
-  p.bp,
-  ul.bp {
-    margin-top: -1rem;
+  hr {
+    margin: var(--base-padding);
+  }
+  img {
+    width: 100%;
   }
 
-  .container {
+  .main {
+    margin: var(--base-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  details {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  p > details {
+    background-color: green;
+  }
+
+  details p,
+  ul {
+    margin: var(--base-padding);
+    margin-top: 0.5rem;
+  }
+
+  details details {
     margin: var(--base-padding);
   }
 
-  .indent {
-    margin-left: calc(var(--base-padding));
-  }
-
-  .double-indent {
-    margin-left: calc(var(--base-padding));
-  }
-
-  #sum2 {
-    font-size: 0.9rem;
-    font-style: italic;
-  }
-
-  .img-container {
-    display: grid;
-  }
-
-  img {
-    justify-self: center;
-    width: 84%;
-    align-self: center;
-  }
-
-  details {
-    /* width: 50%; */
-    margin-top: -0.5rem;
-    /* background: #282828; */
-
-    /* border-radius: 5px; */
-    overflow: none;
-  }
-  @keyframes details-show {
-    from {
-      opacity: 0;
-      transform: var(--details-translate, translateY(-0.5em));
-    }
-  }
-
-  details[open] > *:not(summary) {
-    animation: details-show 150ms ease-in-out;
-  }
-
   summary {
     font-family: "Manrope", sans-serif;
-    font-weight: 600;
-
-    /* margin-left: var(--base-padding); */
-    padding: 1rem;
-    display: block;
-
-    /* background: #333; */
-    padding-left: 2.2rem;
-    position: relative;
+    font-weight: 800;
   }
-
-  summary:before {
-    content: "";
-    border-width: 0.4rem;
-    border-style: solid;
-    border-color: transparent transparent transparent #afaeb9;
-
-    position: absolute;
-    top: 1.3rem;
-    left: 1rem;
-    transform: rotate(0);
-    transform-origin: 0.2rem 50%;
-    transition: 0.25s transform ease;
-  }
-
-  /* THE MAGIC 🧙‍♀️ */
-  details[open] > summary:before {
-    transform: rotate(90deg);
-  }
-
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-
-  details {
-    margin-left: var(--base-padding);
-  }
-
-  details > ul {
-    padding-bottom: 1rem;
-    margin-bottom: 0;
-  }
-  /* details {
-    margin: 1.6rem;
-  }
-
-  summary {
-    font-weight: 600;
-    font-family: "Manrope", sans-serif;
-  }
-
-  details summary > * {
-    display: inline;
-  } */
 </style>
