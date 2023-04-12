@@ -116,21 +116,23 @@ import PageHeader from "../components/PageHeader.astro";
   contactForm.addEventListener("submit", async (e) => {
     // code fragment
     e.preventDefault();
-    alert("You're email will be sent! Thank you!");
-    // emailjs
-    //   .sendForm(
-    //     import.meta.env.PUBLIC_SERVICE,
-    //     import.meta.env.PUBLIC_TEMPLATE,
-    //     e.target as HTMLFormElement
-    //   )
-    //   .then(
-    //     function (response) {
-    //       console.log("SUCCESS!", response.status, response.text);
-    //     },
-    //     function (error) {
-    //       console.log("FAILED...", error);
-    //     }
-    //   );
+
+    emailjs
+      .sendForm(
+        import.meta.env.PUBLIC_SERVICE,
+        import.meta.env.PUBLIC_TEMPLATE,
+        e.target as HTMLFormElement
+      )
+      .then(
+        function (response) {
+          alert("We will get back to you as soon as possible. Thank you!");
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        function (error) {
+          alert("Sorry, something went wrong!");
+          console.log("FAILED...", error);
+        }
+      );
     contactForm.reset();
   });
 </script>
