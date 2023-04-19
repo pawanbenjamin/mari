@@ -9,5 +9,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   output: "server",
   adapter: netlify(),
+  site: "https://www.mariposawellnessllc.com",
   integrations: [sitemap()]
 });
