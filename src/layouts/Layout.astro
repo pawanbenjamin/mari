@@ -27,8 +27,12 @@ const { title } = Astro.props;
           title: "Mariposa Wellness LLC",
           type: "Health Care Physical Therapy Pelvic Floor",
           image:
-            "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png"
+            "https://res.cloudinary.com/dmstif28x/image/upload/v1681262148/aqua-negative_p6pbcc.svg"
         }
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.png" }]
       }}
     />
   </head>
