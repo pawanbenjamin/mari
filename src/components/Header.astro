@@ -42,9 +42,14 @@ const links = [
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="overlay-menu"
-        class="hamburger relative w-8 h-8 flex items-center justify-center"
+        class="hamburger relative w-8 h-8 flex items-center justify-center text-ink"
       >
-        <span class="hamburger-bar"></span>
+        <span class="hamburger-line hamburger-line--top" aria-hidden="true"
+        ></span>
+        <span class="hamburger-line hamburger-line--mid" aria-hidden="true"
+        ></span>
+        <span class="hamburger-line hamburger-line--bot" aria-hidden="true"
+        ></span>
       </button>
     </div>
   </div>
@@ -76,7 +81,7 @@ const links = [
       <button
         id="menu-close"
         aria-label="Close menu"
-        class="w-8 h-8 flex items-center justify-center text-ink hover:text-sage-600 transition-colors"
+        class="close-btn w-8 h-8 flex items-center justify-center text-ink hover:text-sage-600 transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +100,7 @@ const links = [
     </div>
 
     <ul
-      class="flex-1 flex flex-col items-center justify-center gap-4 sm:gap-6 py-12 px-6 text-center"
+      class="menu-list flex-1 flex flex-col items-center justify-center gap-4 sm:gap-6 py-12 px-6 text-center"
     >
       {
         links.map((link) => (
@@ -123,32 +128,98 @@ const links = [
 </nav>
 
 <style>
+  /* Hamburger — three centered bars that morph into an X */
   .hamburger {
     cursor: pointer;
   }
-  .hamburger-bar,
-  .hamburger-bar::before,
-  .hamburger-bar::after {
-    content: "";
+  .hamburger-line {
     position: absolute;
+    left: 50%;
+    top: 50%;
     width: 22px;
     height: 1.5px;
     background-color: currentColor;
     border-radius: 2px;
     transition:
-      transform 0.3s ease,
-      top 0.3s ease,
-      opacity 0.2s ease;
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.2s ease-out,
+      background-color 0.2s ease;
   }
-  .hamburger-bar::before {
-    top: -7px;
+  .hamburger-line--top {
+    transform: translate(-50%, calc(-50% - 7px));
   }
-  .hamburger-bar::after {
-    top: 7px;
+  .hamburger-line--mid {
+    transform: translate(-50%, -50%);
   }
+  .hamburger-line--bot {
+    transform: translate(-50%, calc(-50% + 7px));
+  }
+  .hamburger.open .hamburger-line--top {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .hamburger.open .hamburger-line--mid {
+    opacity: 0;
+    transform: translate(-50%, -50%) scaleX(0);
+  }
+  .hamburger.open .hamburger-line--bot {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  /* Overlay + close-X entrance */
   .overlay-menu.open {
     opacity: 1;
     pointer-events: auto;
+  }
+  .close-btn {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.7);
+    transition:
+      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+      opacity 0.3s ease-out 0.15s,
+      color 0.2s ease;
+  }
+  .overlay-menu.open .close-btn {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  /* Menu items — gentle staggered fade-up */
+  .menu-list li {
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+      transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.35s ease-out;
+  }
+  .overlay-menu.open .menu-list li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .overlay-menu.open .menu-list li:nth-child(1) {
+    transition-delay: 0.12s;
+  }
+  .overlay-menu.open .menu-list li:nth-child(2) {
+    transition-delay: 0.18s;
+  }
+  .overlay-menu.open .menu-list li:nth-child(3) {
+    transition-delay: 0.24s;
+  }
+  .overlay-menu.open .menu-list li:nth-child(4) {
+    transition-delay: 0.3s;
+  }
+  .overlay-menu.open .menu-list li:nth-child(5) {
+    transition-delay: 0.36s;
+  }
+  .overlay-menu.open .menu-list li:nth-child(6) {
+    transition-delay: 0.42s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hamburger-line,
+    .close-btn,
+    .menu-list li {
+      transition-duration: 0.01s;
+    }
   }
 </style>
 
@@ -158,6 +229,7 @@ const links = [
   const menu = document.getElementById("overlay-menu");
 
   const openMenu = () => {
+    toggle?.classList.add("open");
     menu?.classList.add("open");
     menu?.setAttribute("aria-hidden", "false");
     toggle?.setAttribute("aria-expanded", "true");
@@ -165,6 +237,7 @@ const links = [
   };
 
   const closeMenu = () => {
+    toggle?.classList.remove("open");
     menu?.classList.remove("open");
     menu?.setAttribute("aria-hidden", "true");
     toggle?.setAttribute("aria-expanded", "false");

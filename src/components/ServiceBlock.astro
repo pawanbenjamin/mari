@@ -6,9 +6,10 @@ export interface Props {
   desc: string;
   treatmentList: string[];
   imageUrl: string;
+  number?: string;
 }
 
-const { title, desc, treatmentList, imageUrl } = Astro.props;
+const { title, desc, treatmentList, imageUrl, number } = Astro.props;
 const listLabel =
   title === "community education classes"
     ? "class topics include"
@@ -20,12 +21,13 @@ const listLabel =
 >
   {
     imageUrl !== "" && (
-      <figure class="mb-6 overflow-hidden rounded-sm">
+      <figure class="mb-6 overflow-hidden rounded-md bg-sage-50 aspect-[4/3] shadow-sm shadow-sage-900/5">
         <CldImage
           src={imageUrl}
           alt={title}
           height="auto"
           width="auto"
+          class="h-full w-full object-cover saturate-[.85] contrast-[1.05]"
         />
       </figure>
     )
@@ -33,11 +35,24 @@ const listLabel =
 
   <details class="group">
     <summary
-      class="flex items-center justify-between cursor-pointer list-none font-display text-2xl md:text-3xl font-light tracking-tightish text-ink hover:text-sage-600 transition-colors"
+      class="flex items-baseline justify-between gap-4 cursor-pointer list-none text-ink hover:text-sage-600 transition-colors"
     >
-      <span>{title}</span>
+      <span class="flex items-baseline gap-4 min-w-0">
+        {
+          number && (
+            <span class="font-sans text-xs tracking-widest text-sage-500 shrink-0 tabular-nums">
+              {number}
+            </span>
+          )
+        }
+        <span
+          class="font-display text-2xl md:text-3xl font-light tracking-tightish"
+        >
+          {title}
+        </span>
+      </span>
       <span
-        class="ml-4 text-sage-500 text-xl transition-transform group-open:rotate-45"
+        class="shrink-0 text-sage-500 text-xl transition-transform group-open:rotate-45"
         aria-hidden="true">+</span
       >
     </summary>
