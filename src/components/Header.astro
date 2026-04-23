@@ -1,228 +1,183 @@
 ---
-let visible = false;
+const links = [
+  { href: "/", label: "home" },
+  { href: "/about", label: "about" },
+  { href: "/services", label: "services" },
+  { href: "/treatments", label: "treatments" },
+  { href: "/faq", label: "faq" },
+  { href: "/contact", label: "contact" }
+];
 ---
 
-<header>
-  <div id="overlaid-menu" class="hidden">
-    <ul>
-      <a href="/"><li><h2>home</h2></li></a>
-      <a href="/about"> <li><h2>about</h2></li></a>
-      <a href="/services"> <li><h2>services</h2></li></a>
-      <a href="/treatments"> <li><h2>treatments</h2></li></a>
-      <a href="/faq"> <li><h2>faq</h2></li></a>
-      <a href="/contact"> <li><h2>contact</h2></li></a>
-    </ul>
-  </div>
-  <div id="burger-box">
-    <label class="hamburger-menu">
-      <input type="checkbox" />
-    </label>
-  </div>
+<header
+  class="sticky top-0 z-30 backdrop-blur-sm bg-cream-100/80 border-b border-sage-100"
+>
+  <div
+    class="mx-auto max-w-page px-6 py-4 flex items-center justify-between"
+  >
+    <a
+      href="/"
+      class="flex items-center gap-3 font-display text-lg md:text-xl tracking-tightish font-normal"
+    >
+      <img
+        src="/logo.svg"
+        alt="Mariposa Wellness"
+        class="h-8 md:h-9 w-auto shrink-0"
+      />
+      <span class="flex items-baseline gap-1.5">
+        <span class="text-sage-600">mariposa</span>
+        <span class="text-ink-soft italic font-light">wellness</span>
+      </span>
+    </a>
 
-  <a href="/contact"><span>contact</span></a>
+    <div class="flex items-center gap-6">
+      <a
+        href="/contact"
+        class="hidden sm:inline-flex text-xs font-sans uppercase tracking-widest text-ink-soft hover:text-sage-600"
+      >
+        contact
+      </a>
+      <button
+        id="menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="overlay-menu"
+        class="hamburger relative w-8 h-8 flex items-center justify-center"
+      >
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
 </header>
 
-<div id="name">
-  <h1>mariposa</h1>
-  <h1>wellness</h1>
-</div>
+<nav
+  id="overlay-menu"
+  class="overlay-menu fixed inset-0 z-50 bg-cream-100 pointer-events-none opacity-0 transition-opacity duration-300 overflow-y-auto"
+  aria-hidden="true"
+>
+  <div class="min-h-full flex flex-col">
+    <div
+      class="flex items-center justify-between px-6 py-4 border-b border-sage-100"
+    >
+      <a
+        href="/"
+        class="flex items-center gap-3 font-display text-lg md:text-xl tracking-tightish font-normal"
+      >
+        <img
+          src="/logo.svg"
+          alt="Mariposa Wellness"
+          class="h-8 md:h-9 w-auto shrink-0"
+        />
+        <span class="flex items-baseline gap-1.5">
+          <span class="text-sage-600">mariposa</span>
+          <span class="text-ink-soft italic font-light">wellness</span>
+        </span>
+      </a>
+      <button
+        id="menu-close"
+        aria-label="Close menu"
+        class="w-8 h-8 flex items-center justify-center text-ink hover:text-sage-600 transition-colors"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          class="w-6 h-6"
+          aria-hidden="true"
+        >
+          <line x1="5" y1="5" x2="19" y2="19"></line>
+          <line x1="19" y1="5" x2="5" y2="19"></line>
+        </svg>
+      </button>
+    </div>
+
+    <ul
+      class="flex-1 flex flex-col items-center justify-center gap-4 sm:gap-6 py-12 px-6 text-center"
+    >
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="font-display text-2xl sm:text-3xl md:text-4xl font-light tracking-tightish hover:text-sage-600 transition-colors"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="px-6 py-6 text-center">
+      <a
+        href="mailto:admin@mariposawellnessllc.com"
+        class="text-xs font-sans uppercase tracking-widest text-ink-muted hover:text-sage-600"
+      >
+        admin@mariposawellnessllc.com
+      </a>
+    </div>
+  </div>
+</nav>
 
 <style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-
-  .fade-out {
-    /* animation: fade-out 0.2s; */
-  }
-
-  .fade-in {
-    animation: fade-in 0.2s;
-  }
-
-  ul {
-    margin-top: 3rem;
-    padding: var(--base-padding);
-  }
-
-  li {
-    list-style: none;
-    margin-bottom: 0.5rem;
-  }
-
-  h2 {
-    font-weight: 100;
-  }
-
-  h2:hover {
-    opacity: 0.4;
-  }
-
-  #overlaid-menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-    transition: all 0.4s;
-  }
-
-  #name {
-    text-align: center;
-    font-family: "Manrope", sans-serif;
-    margin-top: -3rem;
-  }
-
-  #burger-box,
-  span {
-    width: 25%;
-  }
-
-  h1 {
-    line-height: 1.3rem;
-    font-size: 1.3rem;
-    font-weight: 200;
-  }
-
-  header span {
-    font-weight: 800;
-    font-size: smaller;
-    text-align: right;
-  }
-  header span:hover {
-    opacity: 0.6;
-  }
-  header {
-    height: 4rem;
-    font-family: "Manrope", sans-serif;
-    --bar-width: 20px;
-    --bar-height: 2px;
-    --hamburger-gap: 4px;
-    --foreground: #333;
-    --background: white;
-    --hamburger-margin: 2rem;
-    --animation-timing: 300ms ease-in-out;
-    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--base-padding) var(--base-padding) 0;
-    position: sticky;
-    top: 0;
-  }
-  .hamburger-menu {
-    --x-width: calc(var(--hamburger-height) * 1.41421356237);
-    display: flex;
-    flex-direction: column;
-    gap: var(--hamburger-gap);
-    width: max-content;
-
+  .hamburger {
     cursor: pointer;
   }
-
-  .hamburger-menu:has(input:focus-visible)::before,
-  .hamburger-menu:has(input:focus-visible)::after,
-  .hamburger-menu input:focus-visible {
-    border: 1px solid var(--background);
-    box-shadow: 0 0 0 1px var(--foreground);
-  }
-
-  .hamburger-menu::before,
-  .hamburger-menu::after,
-  .hamburger-menu input {
+  .hamburger-bar,
+  .hamburger-bar::before,
+  .hamburger-bar::after {
     content: "";
-    width: var(--bar-width);
-    height: var(--bar-height);
-    background-color: var(--foreground);
-    border-radius: 9999px;
-    transform-origin: left center;
-    transition: opacity var(--animation-timing), width var(--animation-timing),
-      rotate var(--animation-timing), translate var(--animation-timing),
-      background-color var(--animation-timing);
+    position: absolute;
+    width: 22px;
+    height: 1.5px;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition:
+      transform 0.3s ease,
+      top 0.3s ease,
+      opacity 0.2s ease;
   }
-
-  .hamburger-menu input {
-    appearance: none;
-    padding: 0;
-    margin: 0;
-    outline: none;
-    pointer-events: none;
+  .hamburger-bar::before {
+    top: -7px;
   }
-
-  .hamburger-menu:has(input:checked)::before {
-    rotate: 45deg;
-    width: var(--x-width);
-    translate: 0 calc(var(--bar-height) / -2);
+  .hamburger-bar::after {
+    top: 7px;
   }
-
-  .hamburger-menu:has(input:checked)::after {
-    rotate: -45deg;
-    width: var(--x-width);
-    translate: 0 calc(var(--bar-height) / 2);
-  }
-
-  .hamburger-menu input:checked {
-    opacity: 0;
-    width: 0;
+  .overlay-menu.open {
+    opacity: 1;
+    pointer-events: auto;
   }
 </style>
+
 <script>
-  const name = document.querySelector("#name");
-  function fadeOutOnScroll(element) {
-    if (!element) {
-      return;
-    }
+  const toggle = document.getElementById("menu-toggle");
+  const closeBtn = document.getElementById("menu-close");
+  const menu = document.getElementById("overlay-menu");
 
-    let distanceToTop =
-      window.pageYOffset + element.getBoundingClientRect().top;
+  const openMenu = () => {
+    menu?.classList.add("open");
+    menu?.setAttribute("aria-hidden", "false");
+    toggle?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  };
 
-    let elementHeight = element.offsetHeight;
-    let scrollTop = document.documentElement.scrollTop;
+  const closeMenu = () => {
+    menu?.classList.remove("open");
+    menu?.setAttribute("aria-hidden", "true");
+    toggle?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
 
-    console.log({ distanceToTop, elementHeight, scrollTop });
+  toggle?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+  menu
+    ?.querySelectorAll("a")
+    .forEach((link) => link.addEventListener("click", closeMenu));
 
-    let opacity = 1;
-
-    if (scrollTop > distanceToTop) {
-      opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
-    }
-
-    if (opacity >= 0) {
-      element.style.opacity = opacity;
-    }
-  }
-  function scrollHandler() {
-    fadeOutOnScroll(name);
-  }
-
-  window.addEventListener("scroll", scrollHandler);
-
-  // visibility logic
-
-  const menu = document.querySelector("#overlaid-menu");
-  const contact = document.querySelector("span");
-  const burger = document.querySelector("input");
-  burger.addEventListener("click", (e) => {
-    menu.classList.toggle("fade-in");
-    menu.classList.toggle("hidden");
-    // menu.classList.toggle("fade-out");
-    contact.classList.toggle("hidden");
-    console.log({ menu: menu.classList, contact: contact.classList });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu?.classList.contains("open")) closeMenu();
   });
 </script>

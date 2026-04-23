@@ -1,72 +1,99 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
 import PageHeader from "../components/PageHeader.astro";
-
 import CldImage from "../components/CldImage.astro";
 ---
 
 <Layout title="treatments">
   <PageHeader title="treatment" desc="methods" next="faq" prev="services" />
-  <main>
-    <div class="content">
-      <section class="bp">
-        <h2>core synchronism</h2>
-        <p>
+
+  <main class="mx-auto max-w-page px-6 py-12 md:py-16">
+    <div class="mx-auto max-w-reading space-y-12">
+      <section>
+        <h2 class="font-display text-3xl md:text-4xl font-light tracking-tightish text-ink mb-4">
+          core synchronism
+        </h2>
+        <p class="text-ink-soft leading-relaxed mb-4">
           Core Synchronism is a system of hand medicine designed to assist
           nature in establishing harmony with all parts of the organism. It is
           not pathology specific. It is a mechanical system designed to restore
-          balance, which results in activating an individual’s self-healing
-          ability
+          balance, which results in activating an individual's self-healing
+          ability.
         </p>
-        <a href="http://coresynchronism.org/"><span>more info</span></a>
-      </section>
-      <section class="bp">
-        <h2>visceral manipulation</h2>
-        <p>
-          Visceral Manipulation uses an in depth understanding of the anatomy in
-          order to address fascial restrictions around the organ systems.
-          Visceral manipulation can be utilized to treat a number of different
-          symptoms from chronic constipation, bowel/bladder dysfunction, painful
-          periods, musculoskeletal pain, infertility and more.
-        </p>
-        <a href="https://www.barralinstitute.com/therapies/index.php"
-          ><span>Barral Institute info</span></a
+        <a
+          href="http://coresynchronism.org/"
+          class="inline-flex items-center gap-1 text-sm font-sans uppercase tracking-widest text-sage-600 hover:text-sage-700"
         >
+          more info &rarr;
+        </a>
       </section>
-      <section class="bp">
-        <CldImage
-          src={"mari/stom2_u3amcw.jpg"}
-          width="auto"
-          height="auto"
-          alt="Marisa and Patient"
-        />
-        <h2>pelvic floor physical therapy</h2>
 
-        <p>
+      <hr class="border-sage-100" />
+
+      <section>
+        <h2 class="font-display text-3xl md:text-4xl font-light tracking-tightish text-ink mb-4">
+          visceral manipulation
+        </h2>
+        <p class="text-ink-soft leading-relaxed mb-4">
+          Visceral Manipulation uses an in depth understanding of the anatomy
+          in order to address fascial restrictions around the organ systems.
+          Visceral manipulation can be utilized to treat a number of different
+          symptoms from chronic constipation, bowel/bladder dysfunction,
+          painful periods, musculoskeletal pain, infertility and more.
+        </p>
+        <a
+          href="https://www.barralinstitute.com/therapies/index.php"
+          class="inline-flex items-center gap-1 text-sm font-sans uppercase tracking-widest text-sage-600 hover:text-sage-700"
+        >
+          Barral Institute &rarr;
+        </a>
+      </section>
+
+      <hr class="border-sage-100" />
+
+      <section>
+        <figure class="mb-6 overflow-hidden rounded-sm">
+          <CldImage
+            src={"mari/stom2_u3amcw.jpg"}
+            width="auto"
+            height="auto"
+            alt="Marisa and patient"
+          />
+        </figure>
+        <h2 class="font-display text-3xl md:text-4xl font-light tracking-tightish text-ink mb-4">
+          pelvic floor physical therapy
+        </h2>
+        <p class="text-ink-soft leading-relaxed">
           Pelvic floor physical therapy address the whole body with a deeper
           understanding of the pelvic floor muscles, nerves, organs, and
           function. As a pelvic floor physical therapist my goal is to empower
           each person to understand how their pelvic floor functions and to
-          support them reaching their goals. The pelvic floor is a truly special
-          area of the body because it is the only area in the body where our
-          skeletal muscle have a direct impact on our organs (bowel, bladder,
-          uterus, prostate). Therefor dysfunction at the pelvic floor can lead
-          to bowel/bladder incontinence, retention, constipation, sexual
-          dysfunction, pain, and more. Also, because the pelvic floor is one of
-          our core muscles in can often be a missing link in persistent back
-          pain, sciatica, and hip pain.
+          support them reaching their goals. The pelvic floor is a truly
+          special area of the body because it is the only area in the body
+          where our skeletal muscle have a direct impact on our organs (bowel,
+          bladder, uterus, prostate). Therefor dysfunction at the pelvic floor
+          can lead to bowel/bladder incontinence, retention, constipation,
+          sexual dysfunction, pain, and more. Also, because the pelvic floor is
+          one of our core muscles in can often be a missing link in persistent
+          back pain, sciatica, and hip pain.
         </p>
       </section>
-      <section class="bp">
-        <CldImage
-          src={"mari/four-1_fmzwof.jpg"}
-          width="auto"
-          height="auto"
-          alt="Marisa and Patient"
-        />
-        <h2>myofascial release</h2>
-        <p>
+
+      <hr class="border-sage-100" />
+
+      <section>
+        <figure class="mb-6 overflow-hidden rounded-sm">
+          <CldImage
+            src={"mari/four-1_fmzwof.jpg"}
+            width="auto"
+            height="auto"
+            alt="Marisa and patient"
+          />
+        </figure>
+        <h2 class="font-display text-3xl md:text-4xl font-light tracking-tightish text-ink mb-4">
+          myofascial release
+        </h2>
+        <p class="text-ink-soft leading-relaxed">
           Myofascial release techniques address restrictions in the body's
           connective tissue matrix. Connective tissue, or fascia, is a network
           of tissue that connects our muscles, organs, and bones. Thickening of
@@ -79,46 +106,3 @@ import CldImage from "../components/CldImage.astro";
     </div>
   </main>
 </Layout>
-<style>
-  img {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    margin-left: var(--base-padding);
-    margin-right: var(--base-padding);
-  }
-
-  h2 {
-    font-family: "Manrope", sans-serif;
-  }
-
-  a {
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
-  }
-
-  span {
-    font-style: italic;
-    font-weight: 600;
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-family: "Manrope", sans-serif;
-  }
-
-  span:hover {
-    opacity: 0.6;
-  }
-</style>

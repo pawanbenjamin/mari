@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
-
 import CldImage from "../components/CldImage.astro";
 ---
 
@@ -10,31 +9,35 @@ import CldImage from "../components/CldImage.astro";
 >
   <PageHeader
     title="Integrative Manual Therapy"
-    desc=" & Pelvic Health"
+    desc="& Pelvic Health"
     next="about"
     prev="services"
   />
-  <main>
-    <figure>
+
+  <main class="mx-auto max-w-page px-6 py-12 md:py-16">
+    <figure class="relative overflow-hidden rounded-sm">
       <CldImage
         src={"mari/eight_lmmlwq.jpg"}
-        alt="Marisa with Patient"
+        alt="Marisa with patient"
         width="auto"
         height="auto"
       />
-      <!-- <img src={remoteImage} alt="Marisa with Patient" /> -->
-      <figcaption id="main-heading">
-        <h1>
-          <span class="white">mariposa</span>
-          <br /><span>wellness</span>
-        </h1>
+      <figcaption
+        class="absolute inset-x-0 bottom-0 p-6 md:p-10 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
+      >
+        <h2
+          class="font-display font-light tracking-tightish text-3xl md:text-5xl leading-none text-cream-50"
+        >
+          <span class="opacity-80">mariposa</span>
+          <span class="block italic">wellness</span>
+        </h2>
       </figcaption>
     </figure>
 
-    <section>
-      <p>
+    <section class="mx-auto mt-12 md:mt-16 max-w-reading prose-body">
+      <p class="text-xl md:text-2xl font-display font-light text-ink leading-snug">
         At Mariposa Wellness I combine a variety of manual medicine modalities
-        to treat the whole person
+        to treat the whole person.
       </p>
       <p>
         With an expertise in Pelvic Health and almost 20 years experience as a
@@ -45,110 +48,13 @@ import CldImage from "../components/CldImage.astro";
       </p>
     </section>
 
-    <section id="ask">
-      <a href="/contact"
-        ><button>I would like to become a new patient.</button></a
-      >
-      <a href="https://bchwbooking.clientsecure.me/"
-        ><button>I would like to book an appointment.</button></a
+    <section
+      class="mx-auto mt-12 max-w-reading flex flex-col sm:flex-row gap-3 sm:gap-4"
+    >
+      <a href="/contact" class="btn flex-1">Become a new patient</a>
+      <a href="https://bchwbooking.clientsecure.me/" class="btn-soft flex-1"
+        >Book an appointment</a
       >
     </section>
   </main>
 </Layout>
-
-<style>
-  a {
-    width: 100%;
-  }
-  button {
-    width: 100%;
-  }
-
-  h3 {
-    font-weight: 600;
-  }
-
-  #ask {
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.6rem;
-    padding-bottom: 2rem;
-    margin: 0 calc(var(--base-padding) * 2);
-  }
-
-  figure {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    margin-bottom: 4rem;
-  }
-
-  #main-heading {
-    margin-top: -5rem;
-    line-height: 1.25rem;
-    text-align: right;
-    padding-right: var(--base-padding);
-  }
-
-  p:first-of-type {
-    padding-bottom: 0;
-    /* font-size: large; */
-  }
-
-  p {
-    padding: 1rem calc(2 * var(--base-padding));
-    font-weight: 400;
-  }
-
-  img {
-    width: 100%;
-  }
-
-  main {
-    padding-bottom: 4rem;
-  }
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
-  }
-  @media (min-width: 800px) {
-    main {
-      min-height: 88svh;
-    }
-  }
-</style>
-<script>
-  const subNav = document.querySelector("#sub-nav");
-  function fadeOutOnScroll(element) {
-    if (!element) {
-      return;
-    }
-
-    let distanceToTop =
-      window.pageYOffset + element.getBoundingClientRect().top;
-
-    let elementHeight = element.offsetHeight;
-    let scrollTop = document.documentElement.scrollTop;
-
-    console.log({ distanceToTop, elementHeight, scrollTop });
-
-    let opacity = 1;
-
-    if (scrollTop > distanceToTop) {
-      opacity = 1 - (scrollTop - distanceToTop) / elementHeight;
-    }
-
-    if (opacity >= 0) {
-      element.style.opacity = opacity;
-    }
-  }
-  function scrollHandler() {
-    fadeOutOnScroll(subNav);
-  }
-
-  window.addEventListener("scroll", scrollHandler);
-</script>

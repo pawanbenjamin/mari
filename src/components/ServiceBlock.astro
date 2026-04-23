@@ -9,82 +9,61 @@ export interface Props {
 }
 
 const { title, desc, treatmentList, imageUrl } = Astro.props;
+const listLabel =
+  title === "community education classes"
+    ? "class topics include"
+    : "common conditions treated";
 ---
 
-<div class="main">
+<article
+  class="service-block border-b border-sage-100 py-10 first:pt-0 last:border-b-0"
+>
   {
     imageUrl !== "" && (
-      <CldImage src={imageUrl} alt={title} height="auto" width="auto" />
+      <figure class="mb-6 overflow-hidden rounded-sm">
+        <CldImage
+          src={imageUrl}
+          alt={title}
+          height="auto"
+          width="auto"
+        />
+      </figure>
     )
   }
-  <details>
-    <summary>
-      {title}
+
+  <details class="group">
+    <summary
+      class="flex items-center justify-between cursor-pointer list-none font-display text-2xl md:text-3xl font-light tracking-tightish text-ink hover:text-sage-600 transition-colors"
+    >
+      <span>{title}</span>
+      <span
+        class="ml-4 text-sage-500 text-xl transition-transform group-open:rotate-45"
+        aria-hidden="true">+</span
+      >
     </summary>
-    <p>
-      {desc}
-      <details>
-        {
-          title === "community education classes" ? (
-            <summary>class topics include</summary>
-          ) : (
-            <summary>common conditions treated</summary>
-          )
-        }
 
-        <ul>
-          {
-            treatmentList !== undefined &&
-              treatmentList.map((treatment) => {
-                return <li>{treatment}</li>;
-              })
-          }
-        </ul>
-      </details>
-    </p>
+    <div class="mt-5 space-y-5">
+      <p class="text-ink-soft leading-relaxed">{desc}</p>
+
+      {
+        treatmentList && treatmentList.length > 0 && (
+          <details class="pl-4 border-l-2 border-sage-200">
+            <summary class="cursor-pointer list-none font-sans text-xs uppercase tracking-widest text-sage-600 hover:text-sage-700">
+              {listLabel} &rarr;
+            </summary>
+            <ul class="mt-3 grid gap-1.5 text-sm text-ink-soft sm:grid-cols-2">
+              {treatmentList.map((treatment) => (
+                <li class="flex gap-2">
+                  <span class="text-sage-400" aria-hidden="true">
+                    ·
+                  </span>
+                  <span>{treatment}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )
+      }
+    </div>
   </details>
-  <hr />
-</div>
-
-<style>
-  hr {
-    margin: var(--base-padding);
-  }
-  img {
-    width: 100%;
-  }
-
-  .main {
-    margin: var(--base-padding);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  details {
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-  }
-
-  p > details {
-    background-color: green;
-  }
-
-  details p,
-  ul {
-    margin: var(--base-padding);
-    margin-top: 0.5rem;
-  }
-
-  details details {
-    margin: var(--base-padding);
-  }
-
-  summary {
-    font-family: "Manrope", sans-serif;
-    font-weight: 800;
-  }
-</style>
+</article>

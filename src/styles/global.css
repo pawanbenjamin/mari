@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-cream-100 text-ink antialiased;
+    font-feature-settings: "ss01", "ss02";
+  }
+
+  body {
+    @apply font-sans leading-relaxed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tightish;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl font-light;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl font-light;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl font-normal;
+  }
+
+  a {
+    @apply text-ink transition-colors;
+  }
+
+  a:hover {
+    @apply text-sage-600;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-sm
+           bg-sage-600 text-cream-50 font-sans text-sm tracking-wide
+           uppercase transition-colors hover:bg-sage-700
+           focus:outline-none focus:ring-2 focus:ring-sage-400 focus:ring-offset-2 focus:ring-offset-cream-100;
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-sm
+           bg-rose-200 text-ink font-sans text-sm tracking-wide
+           uppercase transition-colors hover:bg-rose-300
+           focus:outline-none focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 focus:ring-offset-cream-100;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-sm
+           border border-sage-300 text-ink font-sans text-sm tracking-wide
+           uppercase transition-colors hover:bg-sage-50
+           focus:outline-none focus:ring-2 focus:ring-sage-400 focus:ring-offset-2 focus:ring-offset-cream-100;
+  }
+
+  .prose-body p {
+    @apply text-ink-soft leading-relaxed mb-6;
+  }
+}

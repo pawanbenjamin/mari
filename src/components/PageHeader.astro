@@ -7,81 +7,30 @@ export interface Props {
 }
 
 const { title, desc, prev, next } = Astro.props;
+const prevHref = prev === "home" ? "/" : `/${prev}`;
+const nextHref = next === "home" ? "/" : `/${next}`;
 ---
 
-<header id="sub-nav">
-  <h3>{title}<br /> {desc}</h3>
-  <nav>
-    <div>
-      <a href={`/${prev === "home" ? "" : prev}`}><span> ← {prev}</span></a>
-    </div>
-    <div>
-      <a href={`/${next === "home" ? "" : next}`}><span>{next} →</span></a>
-    </div>
-  </nav>
-</header>
-
-<style>
-  nav {
-    text-align: right;
-    font-style: italic;
-    font-weight: 100;
-    font-size: 1.3rem;
-  }
-
-  nav span:hover {
-    opacity: 0.6;
-  }
-  .white {
-    color: white;
-    opacity: 0.8;
-  }
-
-  figure {
-    margin-bottom: 4rem;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    padding: 2rem var(--base-padding) 0.75rem var(--base-padding);
-    font-weight: 800;
-    line-height: 1rem;
-  }
-
-  #main-heading {
-    margin-top: -5rem;
-    line-height: 1.25rem;
-    text-align: right;
-    padding-right: var(--base-padding);
-  }
-
-  p:first-of-type {
-    padding-bottom: 0;
-    /* font-size: large; */
-  }
-
-  p {
-    padding: 1rem calc(2 * var(--base-padding));
-    line-height: 1.5rem;
-    font-weight: 400;
-  }
-
-  img {
-    width: 100%;
-  }
-
-  main {
-    height: 100vh;
-    padding-bottom: 4rem;
-  }
-  h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin: 0;
-  }
-
-  h3 {
-    font-family: "Manrope", sans-serif;
-  }
-</style>
+<section id="sub-nav" class="mx-auto max-w-page px-6 pt-10 md:pt-16">
+  <div class="flex flex-col gap-4">
+    {
+      (title || desc) && (
+        <h1 class="font-display font-light tracking-tightish text-4xl md:text-6xl leading-[1.05]">
+          {title && <span class="block text-ink">{title}</span>}
+          {desc && <span class="block italic text-sage-600">{desc}</span>}
+        </h1>
+      )
+    }
+    <nav
+      class="mt-4 flex items-center justify-between text-xs font-sans uppercase tracking-widest text-ink-muted"
+    >
+      <a href={prevHref} class="hover:text-sage-600">
+        &larr; {prev}
+      </a>
+      <a href={nextHref} class="hover:text-sage-600">
+        {next} &rarr;
+      </a>
+    </nav>
+    <hr class="mt-2 border-sage-100" />
+  </div>
+</section>

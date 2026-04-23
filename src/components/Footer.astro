@@ -1,26 +1,33 @@
-<footer>
-  <a href="/"><span>home</span></a>
-  <a href="/about"><span>about</span></a>
-  <a href="/treatments"><span>treatments</span></a>
-  <a href="/services"><span>services</span></a>
-  <a href="/faq"><span>faq</span></a>
-  <a href="/contact"><span>contact</span></a>
-</footer>
-<style>
-  footer {
-    display: flex;
-    justify-content: space-between;
-    height: 4rem;
-    /* width: 100vw; */
-    padding: calc(var(--base-padding) * 2) calc(var(--base-padding) * 2);
-  }
-  span {
-    font-family: "Manrope", sans-serif;
-    font-weight: 800;
-    font-size: smaller;
-  }
+---
+const links = [
+  { href: "/", label: "home" },
+  { href: "/about", label: "about" },
+  { href: "/services", label: "services" },
+  { href: "/treatments", label: "treatments" },
+  { href: "/faq", label: "faq" },
+  { href: "/contact", label: "contact" }
+];
+const year = new Date().getFullYear();
+---
 
-  span:hover {
-    opacity: 0.6;
-  }
-</style>
+<footer class="mt-24 border-t border-sage-100 bg-cream-50">
+  <div class="mx-auto max-w-page px-6 py-10">
+    <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-xs font-sans uppercase tracking-widest text-ink-muted hover:text-sage-600"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <p
+      class="mt-6 text-center text-xs font-sans text-ink-muted tracking-wide"
+    >
+      &copy; {year} Mariposa Wellness LLC
+    </p>
+  </div>
+</footer>

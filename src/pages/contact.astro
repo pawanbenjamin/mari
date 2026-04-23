@@ -5,126 +5,96 @@ import PageHeader from "../components/PageHeader.astro";
 
 <Layout title="contact">
   <PageHeader title="" desc="contact" next="home" prev="faq" />
-  <main>
-    <div class="container">
-      <section class="returning">
-        <h3>returning patients</h3>
-        <hr />
-        <a href="https://bchwbooking.clientsecure.me/">
-          <button>book appointment</button></a
-        >
-      </section>
-      <section class="new">
-        <h3>new patients</h3>
-        <hr />
-        <p>
-          If you would like to become a new patient, please reach out to
-          admin@mariposawellnessllc.com
+
+  <main class="mx-auto max-w-page px-6 py-12 md:py-16">
+    <div class="mx-auto max-w-reading grid gap-10 md:grid-cols-2">
+      <section
+        class="rounded-sm border border-sage-100 bg-cream-50 p-8 flex flex-col gap-6"
+      >
+        <div>
+          <h2
+            class="font-display text-2xl md:text-3xl font-light tracking-tightish text-ink"
+          >
+            returning patients
+          </h2>
+          <hr class="mt-3 border-sage-200" />
+        </div>
+        <p class="text-ink-soft leading-relaxed">
+          Book your next appointment through our secure client portal.
         </p>
+        <a
+          href="https://bchwbooking.clientsecure.me/"
+          class="btn"
+        >
+          book appointment
+        </a>
+      </section>
+
+      <section
+        class="rounded-sm border border-sage-100 bg-cream-50 p-8 flex flex-col gap-6"
+      >
+        <div>
+          <h2
+            class="font-display text-2xl md:text-3xl font-light tracking-tightish text-ink"
+          >
+            new patients
+          </h2>
+          <hr class="mt-3 border-sage-200" />
+        </div>
+        <p class="text-ink-soft leading-relaxed">
+          If you would like to become a new patient, please reach out at the
+          address below.
+        </p>
+        <a
+          href="mailto:admin@mariposawellnessllc.com"
+          class="font-sans text-sage-700 hover:text-sage-800 tracking-tight break-words [word-break:break-word] text-base sm:text-lg"
+        >
+          admin<wbr />@mariposawellnessllc.com
+        </a>
+        <div class="mt-auto flex flex-col gap-2">
+          <a href="mailto:admin@mariposawellnessllc.com" class="btn">
+            send email
+          </a>
+          <button
+            type="button"
+            data-copy-email="admin@mariposawellnessllc.com"
+            class="btn-ghost"
+          >
+            <span data-copy-label>copy email</span>
+          </button>
+        </div>
       </section>
     </div>
   </main>
 </Layout>
-<style>
-  /* h3 {
-    border-bottom: 1px solid black;
-  } */
-  hr {
-    margin: 0;
-  }
-  button {
-    width: 100%;
-  }
-  a {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    padding: 0 20%;
-    min-height: calc(100vh - var(--base-padding));
-    text-align: center;
-  }
 
-  .sub-but {
-    margin-top: 1rem;
-  }
-
-  input {
-    border: none;
-    background: none;
-    font-size: 1rem;
-    height: 1.4rem;
-    background-color: rgb(242, 242, 245);
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  .returning {
-    margin-top: var(--base-padding);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .new {
-    margin-top: calc(var(--base-padding) * 3);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-</style>
-<script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-></script>
 <script>
-  import emailjs from "@emailjs/browser";
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-email]").forEach(
+    (btn) => {
+      const label = btn.querySelector<HTMLSpanElement>("[data-copy-label]");
+      const original = label?.textContent ?? "copy email";
+      let resetTimer: number | undefined;
 
-  async function connectToEmailJs() {
-    try {
-      emailjs.init(import.meta.env.PUBLIC_KEY);
-      console.log(emailjs);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  connectToEmailJs();
-
-  const contactForm = document.getElementById(
-    "contact-form"
-  ) as HTMLFormElement;
-  console.log(contactForm);
-  contactForm.addEventListener("submit", async (e) => {
-    // code fragment
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        import.meta.env.PUBLIC_SERVICE,
-        import.meta.env.PUBLIC_TEMPLATE,
-        e.target as HTMLFormElement
-      )
-      .then(
-        function (response) {
-          alert("We will get back to you as soon as possible. Thank you!");
-          console.log("SUCCESS!", response.status, response.text);
-        },
-        function (error) {
-          alert("Sorry, something went wrong!");
-          console.log("FAILED...", error);
+      btn.addEventListener("click", async () => {
+        const email = btn.dataset.copyEmail ?? "";
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch {
+          const textarea = document.createElement("textarea");
+          textarea.value = email;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
         }
-      );
-    contactForm.reset();
-  });
+        if (label) label.textContent = "copied!";
+        window.clearTimeout(resetTimer);
+        resetTimer = window.setTimeout(() => {
+          if (label) label.textContent = original;
+        }, 2000);
+      });
+    }
+  );
 </script>
